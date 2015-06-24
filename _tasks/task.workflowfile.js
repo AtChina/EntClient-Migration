@@ -24,16 +24,16 @@ module.exports = function() {
         _.templateSettings = {
             interpolate: /\{\{(.+?)\}\}/g
         };
-    }).then(function() { //第二步:清理output/workflow/files和tmp目录
+    }).then(function() { //第二步:清理.tmp目录
         var deferred = Q.defer();
-        del([conf.fileName,'./output/workflow/files', './.tmp'], function(err, paths) {
+        del([conf.fileName,'./.tmp'], function(err, paths) {
             if (err)
                 deferred.reject(new Error(err));
             else
                 deferred.resolve(true);
         });
         return deferred.promise;
-    }).then(function(success) { //第三步:解压表单文件到output/workflow/files目录
+    }).then(function(success) { //第三步:解压表单文件到.tmp目录
         if (success) {
             var deferred = Q.defer();
             gulp.src('./_workflowfile/*.{tar,tar.bz2,tar.gz,zip}')
@@ -42,14 +42,12 @@ module.exports = function() {
                 }))
                 .pipe(gulp.dest('./.tmp'))
                 .on('finish', function() {
-                    gulp.src(['!./.tmp/workflow.xml', '!./.tmp/localdatasource.xml', '!./.tmp/datasourceconfig.xml', './.tmp/**/*.{rtx,xml,xwf,xmp}'])
-                        .pipe(gulp.dest('./output/workflow/files'))
-                        .on('finish', function() {
+                    del(['./.tmp/workflow.xml', './.tmp/localdatasource.xml', './.tmp/datasourceconfig.xml'], function(err, paths) {
+                        if (err)
+                            deferred.reject(new Error(err));
+                        else
                             deferred.resolve(true);
-                        })
-                        .on('error', function(error) {
-                            deferred.reject(new Error(error));
-                        });
+                    });
                 })
                 .on('error', function(error) {
                     deferred.reject(new Error(error));
@@ -60,7 +58,7 @@ module.exports = function() {
         if (success) {
             var contents = [],
                 deferred = Q.defer();
-            gulp.src('./output/workflow/files/**/*.rtx') //手机端只用到rtx协议，xml,xwf,xmp没有用到，所以不去处理
+            gulp.src('./.tmp/**/*.rtx') //手机端只用到rtx协议，xml,xwf,xmp没有用到，所以不去处理
                 .pipe(map(function(file, callback) {
                     var protocol = path.extname(file.path);
                     var workflowid = path.basename(file.path, protocol);
