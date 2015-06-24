@@ -17,8 +17,8 @@ module.exports = function() {
         uuid = require('node-uuid'),
         colors = require('colors/safe'),
         decompress = require('gulp-decompress'),
-        template = require('../_maps/com_t_workflowform.tpl')(),
-        flieName='./output/workflow/com_t_workflowform.import.sql';
+        template = require('../_maps/tpl.com_t_workflowform')(),
+        conf = require('../_utility/tool.conf')('workflowfile');
 
     Q.fcall(function() { //第一步:设置默默绑定表达式
         _.templateSettings = {
@@ -26,7 +26,7 @@ module.exports = function() {
         };
     }).then(function() { //第二步:清理output/workflow/files和tmp目录
         var deferred = Q.defer();
-        del([flieName,'./output/workflow/files', './.tmp'], function(err, paths) {
+        del([conf.fileName,'./output/workflow/files', './.tmp'], function(err, paths) {
             if (err)
                 deferred.reject(new Error(err));
             else
@@ -93,11 +93,13 @@ module.exports = function() {
             var sqlContent = '',
                 deferred = Q.defer(),
                 _compiler = _.template(template);
-
+            
+            sqlContent +=conf.transaction.begin;
             _.each(contents, function(content, index) {
                 sqlContent += _compiler(content);               
             });
-            fs.writeFile(flieName, sqlContent,'utf8', function (err,data) {
+            sqlContent +=conf.transaction.end;
+            fs.writeFile(conf.fileName, sqlContent,'utf8', function (err,data) {
                 if (err) 
                   deferred.reject(new Error(err)); 
                 else
