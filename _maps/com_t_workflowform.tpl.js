@@ -7,7 +7,7 @@ module.exports = function() {
     var template = "IF EXISTS(SELECT 1 FROM com_t_workflowform  WHERE xwworkflowformid='{{xwworkflowformid}}' and xwenterprisenumber='{{xwenterprisenumber}}')\r\n";
     template += "   BEGIN\r\n";
     template += "      UPDATE [dbo].[com_t_workflowform]\r\n";
-    template += "       SET [xwworkflowid] = '{{xwworkflowformid}}'\r\n";
+    template += "       SET [xwworkflowid] = '{{xwworkflowid}}'\r\n";
     template += "          ,[xwworkflowformname] = '{{xwworkflowformname}}'\r\n";
     template += "          ,[xwcreatetime] ={{xwcreatetime}}\r\n";
     template += "          ,[xwsendtime] ={{xwsendtime}}\r\n";

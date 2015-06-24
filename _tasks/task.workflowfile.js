@@ -16,8 +16,9 @@ module.exports = function() {
         map = require('map-stream'),
         uuid = require('node-uuid'),
         colors = require('colors/safe'),
+        decompress = require('gulp-decompress'),
         template = require('../_maps/com_t_workflowform.tpl')(),
-        decompress = require('gulp-decompress');
+        flieName='./output/workflow/com_t_workflowform.import.sql';
 
     Q.fcall(function() { //第一步:设置默默绑定表达式
         _.templateSettings = {
@@ -25,11 +26,11 @@ module.exports = function() {
         };
     }).then(function() { //第二步:清理output/workflow/files和tmp目录
         var deferred = Q.defer();
-        del(['./output/workflow/files', './.tmp'], function(err, paths) {
-            if (!!!err)
-                deferred.resolve(true);
-            else
+        del([flieName,'./output/workflow/files', './.tmp'], function(err, paths) {
+            if (err)
                 deferred.reject(new Error(err));
+            else
+                deferred.resolve(true);
         });
         return deferred.promise;
     }).then(function(success) { //第三步:解压表单文件到output/workflow/files目录
@@ -94,9 +95,14 @@ module.exports = function() {
                 _compiler = _.template(template);
 
             _.each(contents, function(content, index) {
-                sqlContent += _compiler(content);
+                sqlContent += _compiler(content);               
             });
-            console.log(sqlContent);
+            fs.writeFile(flieName, sqlContent,'utf8', function (err,data) {
+                if (err) 
+                  deferred.reject(new Error(err)); 
+                else
+                  deferred.resolve(true);
+            });
             return deferred.promise;
         }
     }).catch(function(error) {
