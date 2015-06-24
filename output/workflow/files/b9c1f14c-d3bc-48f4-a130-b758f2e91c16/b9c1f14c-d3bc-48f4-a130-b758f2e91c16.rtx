@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<f i="b9c1f14c-d3bc-48f4-a130-b758f2e91c16" t="用户在线列表" fo="83135548" ip="0" ds="" q="0" e="" k="" tk="" onback="" onload="" ps="" bg="">
+  <e i="159565868" v="" c="keyflag" m="100" l="l" k="keyflag" q="0" vi="1" rd="0" ec="0" na="0" onchange="" onfocus="" onblur="" focus="0"/><b />
+  <e i="420482484" v="" c="sowsintensive" m="100" l="l" k="sowsintensive" q="0" vi="1" rd="0" ec="0" na="0" onchange="" onfocus="" onblur="" focus="0"/><b />
+  <e i="1211539809" v="" c="DistributorId" m="100" l="l" k="DistributorId" q="0" vi="1" rd="0" ec="0" na="0" onchange="" onfocus="" onblur="" focus="0"/><b />
+  <e i="1526537269" v="" c="StoreCode" m="100" l="l" k="StoreCode" q="0" vi="1" rd="0" ec="0" na="0" onchange="" onfocus="" onblur="" focus="0"/><b />
+  <ls i="1905247917" c="列表控件1" k="Guid" m="2" h="$StoreTypeID#;=;101;and;$Col20#;=;用户;xw-affairs://2c8f226e-3558-4e60-b199-6a95a3cde422|$Col20#;=;用户;and;$StoreTypeID#;=;102;xw-affairs://db2b280e-302d-4f53-a922-52bbba157344" ds="57baa00e-e385-4ea5-a8fa-5f9880c99b3a" op="1" ts="0" ti="$StoreName#" id="Guid" v="" q="0" vi="1" rd="0" ec="1" tb="" na="0" focus="" stat="" edit="" gn="" gnstat="" sc="" pic="" sm="0" cen="" gs="" tmp="lsitem:1715498212" gn2="" gn3=""/><b />
+  <tmp>
+  <lsitem i="1715498212" no="1" >
+    <lsi tkey="storetitle" skey="StoreName" fc="" />
+    <lsi tkey="storeaddress" skey="Address" fc="" />
+    <lsi tkey="lastvisitdate" skey="LastVisitDate" fc="" />
+    <lsi tkey="visitstate" skey="Col20" fc="" />
+    <lsi tkey="storedistance" skey="Location" fc="" />
+  </lsitem>
+  </tmp>
+  <data>
+    <m i="57baa00e-e385-4ea5-a8fa-5f9880c99b3a" c="经销商用户在线列表20140826" op="1" tb="" v="" k="数据源映射10" q="0" vi="1" rd="0" ec="0" enc="0" sms="0" sql="">
+
+        <p n="UserNumber" c="UserNumber" v="" r="-1" io="i"/>
+
+        <p n="StoreCode" c="StoreCode" v="" r="-1" io="i"/>
+
+        <p n="DistributorId" c="DistributorId" v="" r="-1" io="i"/>
+
+        <p n="sowsintensive" c="sowsintensive" v="" r="-1" io="i"/>
+
+        <p n="Guid" c="Guid" v="" r="-1" io="o"/>
+
+        <p n="StoreID" c="StoreID" v="" r="-1" io="o"/>
+
+        <p n="StoreName" c="StoreName" v="" r="-1" io="o"/>
+
+        <p n="StoreShortName" c="StoreShortName" v="" r="-1" io="o"/>
+
+        <p n="StoreRankID" c="StoreRankID" v="" r="-1" io="o"/>
+
+        <p n="StoreRankName" c="StoreRankName" v="" r="-1" io="o"/>
+
+        <p n="StoreTypeID" c="StoreTypeID" v="" r="-1" io="o"/>
+
+        <p n="StoreTypeName" c="StoreTypeName" v="" r="-1" io="o"/>
+
+        <p n="StoreCode" c="StoreCode" v="" r="-1" io="o"/>
+
+        <p n="SaleAreaID" c="SaleAreaID" v="" r="-1" io="o"/>
+
+        <p n="KACustomerID" c="KACustomerID" v="" r="-1" io="o"/>
+
+        <p n="RegionID" c="RegionID" v="" r="-1" io="o"/>
+
+        <p n="Address" c="Address" v="" r="-1" io="o"/>
+
+        <p n="PostCode" c="PostCode" v="" r="-1" io="o"/>
+
+        <p n="Tel" c="Tel" v="" r="-1" io="o"/>
+
+        <p n="Fax" c="Fax" v="" r="-1" io="o"/>
+
+        <p n="Email" c="Email" v="" r="-1" io="o"/>
+
+        <p n="Location" c="Location" v="" r="-1" io="o"/>
+
+        <p n="BizLicense" c="BizLicense" v="" r="-1" io="o"/>
+
+        <p n="Remark" c="Remark" v="" r="-1" io="o"/>
+
+        <p n="Col1" c="Col1" v="" r="-1" io="o"/>
+
+        <p n="Col2" c="Col2" v="" r="-1" io="o"/>
+
+        <p n="Col3" c="Col3" v="" r="-1" io="o"/>
+
+        <p n="Col4" c="Col4" v="" r="-1" io="o"/>
+
+        <p n="Col5" c="Col5" v="" r="-1" io="o"/>
+
+        <p n="Col6" c="Col6" v="" r="-1" io="o"/>
+
+        <p n="Col7" c="Col7" v="" r="-1" io="o"/>
+
+        <p n="Col8" c="Col8" v="" r="-1" io="o"/>
+
+        <p n="Col9" c="Col9" v="" r="-1" io="o"/>
+
+        <p n="Col10" c="Col10" v="" r="-1" io="o"/>
+
+        <p n="Col11" c="Col11" v="" r="-1" io="o"/>
+
+        <p n="Col12" c="Col12" v="" r="-1" io="o"/>
+
+        <p n="Col13" c="Col13" v="" r="-1" io="o"/>
+
+        <p n="Col14" c="Col14" v="" r="-1" io="o"/>
+
+        <p n="Col15" c="Col15" v="" r="-1" io="o"/>
+
+        <p n="Col16" c="Col16" v="" r="-1" io="o"/>
+
+        <p n="Col17" c="Col17" v="" r="-1" io="o"/>
+
+        <p n="Col18" c="Col18" v="" r="-1" io="o"/>
+
+        <p n="Col19" c="Col19" v="" r="-1" io="o"/>
+
+        <p n="Col20" c="Col20" v="" r="-1" io="o"/>
+
+        <p n="sowsintensive" c="sowsintensive" v="" r="-1" io="o"/>
+
+        <p n="LastVisitDate" c="LastVisitDate" v="" r="-1" io="o"/>
+
+        <p n="xwlon" c="xwlon" v="" r="-1" io="o"/>
+
+        <p n="xwlat" c="xwlat" v="" r="-1" io="o"/>
+
+        <p n="xwstoretype" c="xwstoretype" v="" r="-1" io="o"/>
+
+        <p n="CheckStatus" c="CheckStatus" v="" r="-1" io="o"/>
+  </m>
+  </data>
+</f>
