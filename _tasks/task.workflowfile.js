@@ -66,7 +66,7 @@ module.exports = function() {
                     callback(null, {
                         xwworkflowformid: uuid.v4(),
                         xwworkflowid: workflowid,
-                        xwenterprisenumber: -1,
+                        xwenterprisenumber:conf.enterprise.enterprisenumber,
                         xwworkflowformname: workflowid + protocol,
                         xwcreatetime: 'getdate()',
                         xwsendtime: 'getdate()',
