@@ -1,7 +1,7 @@
 /**
  * Author:      changyingwei
  * Create Date: 2015-06-25
- * Description: com_t_datasource数据源迁移
+ * Description: com_t_field数据源迁移
  */
 module.exports = function() {
     'use strict';
@@ -20,7 +20,7 @@ module.exports = function() {
     //测试连接PG数据库=>OK
     var client = conf.database.xuanwuenterprise;
     client.connect();
-    client.query("SELECT * FROM xwdatasource;", function(err, result) {
+    client.query("SELECT * FROM xwfield limit 1;", function(err, result) {
             if (err) {
                 return console.error('error running query', err);
             } else {
@@ -42,19 +42,19 @@ module.exports = function() {
         });
 
     //测试连接MSSQL数据库OK
-    // var queryObj = conf.database.xw_dc_enterprise;
-    // queryObj
-    //     .table('dbo.com_t_datasource')
-    //     // .where({
-    //     //     departmentid: '2FC8C371-CD11-4788-ADFF-FC322979FFC6'
-    //     // })
-    //     .select(function(results, sql) {
-    //         console.log('=============================MSSQL=============================');
-    //         console.log(results);
-    //         console.log('=============================MSSQL=============================');
-    //     }, function(err, sql) {
-    //         if (err)
-    //             console.log(err);
-    //         console.log(sql);
-    //     });
+    var queryObj = conf.database.xw_dc_enterprise;
+    queryObj
+        .table('dbo.com_t_field')
+        // .where({
+        //     departmentid: '2FC8C371-CD11-4788-ADFF-FC322979FFC6'
+        // })
+        .select(function(results, sql) {
+            console.log('=============================MSSQL=============================');
+            console.log(results);
+            console.log('=============================MSSQL=============================');
+        }, function(err, sql) {
+            if (err)
+                console.log(err);
+            console.log(sql);
+        });
 };
