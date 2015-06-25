@@ -21,6 +21,6 @@ module.exports = function(taskname) {
         taskConf = _.extend(conf, taskConf);
     }
     taskConf.enterprise = enterprise || {};
-    taskConf.database = database || {};
+    taskConf.database = require(__dirname + '/tool.driver')(database.dblist);
     return taskConf;
 };

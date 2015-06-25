@@ -16,7 +16,7 @@ module.exports = function() {
         uuid = require('node-uuid'),
         colors = require('colors/safe'),
         decompress = require('gulp-decompress'),
-        template = require('../_maps/tpl.com_t_workflowform')(),
+        template = require('../_templates/tpl.com_t_workflowform')(),
         conf = require('../_utility/tool.conf')('workflowfile');
 
     Q.fcall(function() { //第一步:设置默默绑定表达式

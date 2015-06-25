@@ -15,23 +15,12 @@ module.exports = function() {
         map = require('map-stream'),
         uuid = require('node-uuid'),
         colors = require('colors/safe'),
-        pg = require('pg'),
-        node_mssql = require('node-mssql');
+        conf = require('../_utility/tool.conf')();
 
     //测试连接MSSQL数据库OK
-    var queryObj = new node_mssql.Query({
-        host: '10.10.20.45',
-        port: 1433,
-        user: 'sa',
-        password: 'xw@ETION',
-        database: 'xw_dl_1008413'
-    });
+    var queryObj = conf.database.xw_dc_enterprise;
     queryObj
         .table('dbo.com_t_menu')
-        // .data({
-        //     'title': 'MyTest',
-        //     'description': 'desc'
-        // })
         .where({
             'menucode': 'M.101.1',
         })
@@ -45,13 +34,7 @@ module.exports = function() {
             console.log(sql);
         });
     //测试连接PG数据库=>OK
-    var client = new pg.Client({
-        host: '211.155.27.215',
-        port: 5432,
-        user: 'postgres',
-        password: '123456',
-        database: 'xuanwuenterprise20150623'
-    });
+    var client = conf.database.xuanwuenterprise;
     client.connect();
     client.query("SELECT * FROM xwuserinfo;", function(err, result) {
             if (err) {
