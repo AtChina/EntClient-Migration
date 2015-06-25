@@ -6,7 +6,8 @@
 module.exports = function() {
     'use strict';
     return {
-        wff: require('./task.workflowfile'), //表单迁移任务
+        wff: require('./task.workflowfile'), //表单文件迁移任务
+        ds: require('./task.datasource'), //数据源迁移任务
         default: 'TODO:' //默认执行所有任务
     };
 };

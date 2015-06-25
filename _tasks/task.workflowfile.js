@@ -11,7 +11,6 @@ module.exports = function() {
         del = require('del'),
         gulp = require('gulp'),
         path = require('path'),
-        File = require('vinyl'),
         _ = require('underscore'),
         map = require('map-stream'),
         uuid = require('node-uuid'),
@@ -109,6 +108,6 @@ module.exports = function() {
     }).catch(function(error) {
         console.log(colors.red.bold(error)); //处理错误
     }).finally(function(success) {
-
+        del(['./.tmp']); //最后清除临时文件
     }).done();
 };
