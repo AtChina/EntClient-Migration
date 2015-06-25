@@ -1,3 +1,4 @@
+#1.说明文件
 ##环境依赖
 企业配置化数据库自动迁移脚本需要依赖[nodejs](http://nodejs.org/dist/v0.10.33/node-v0.10.33-x86.msi)，使用前请先自行下载安装。
 
@@ -10,8 +11,7 @@
 * output：任务执行结果
 * index.js：运行任务的入口文件，在**EntClient-Migration**目录下，按住shift+鼠标右键，然后选择“在此处打开命令行窗口”，输入`node index.js`即可运行工作流了。
 
-#需要迁移的文件
-
+#2.迁移步骤
 ##基础信息（不迁移，开通企业后手动去调整）
 com_t_enterprise
 com_t_enterpriseargument
