@@ -14,7 +14,9 @@ module.exports = function(taskname) {
         enterprise = yamljs.load(process.cwd() + '/_conf/conf.enterprise.yml'),
         tasklist = yamljs.load(process.cwd() + '/_conf/conf.tasksort.yml').tasklist;
 
-    conf = tasklist[taskname] || null;
+    conf = _.findWhere(tasklist, {
+        taskname: taskname
+    }) || {};
     if (conf) {
         taskConf.fileName = conf.output_path + conf.output_name;
         taskConf.transaction = require(__dirname + '/tool.transaction')(conf.transaction, conf.description);

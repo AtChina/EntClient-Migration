@@ -1,6 +1,6 @@
 #基础设施配置
 tasklist:
-  workflowfile:
+  - taskname: 'workflowfile'
     output_name: '1.com_t_workflowform.import.sql'
     output_path: './output/'
     transaction: 'com_t_workflowform_transaction'
