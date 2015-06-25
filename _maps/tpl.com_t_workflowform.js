@@ -39,6 +39,5 @@ module.exports = function() {
     template += "           ,'{{xwxmlcode}}'\r\n";
     template += "           ,'{{xwformtype}}');\r\n";
     template += "   END\r\n";
-    template += "GO\r\n";
     return template;
 };

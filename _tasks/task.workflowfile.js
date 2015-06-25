@@ -26,7 +26,7 @@ module.exports = function() {
         };
     }).then(function() { //第二步:清理.tmp目录
         var deferred = Q.defer();
-        del([conf.fileName,'./.tmp'], function(err, paths) {
+        del([conf.fileName, './.tmp'], function(err, paths) {
             if (err)
                 deferred.reject(new Error(err));
             else
@@ -60,18 +60,19 @@ module.exports = function() {
                 deferred = Q.defer();
             gulp.src('./.tmp/**/*.rtx') //手机端只用到rtx协议，xml,xwf,xmp没有用到，所以不去处理
                 .pipe(map(function(file, callback) {
-                    var protocol = path.extname(file.path);
-                    var workflowid = path.basename(file.path, protocol);
-                    var content = file.contents.toString('utf8', 0, file.contents.length);
+                    var protocol = path.extname(file.path),
+                        workflowid = path.basename(file.path, protocol),
+                        content = file.contents.toString('utf8', 0, file.contents.length);
+
                     callback(null, {
                         xwworkflowformid: uuid.v4(),
                         xwworkflowid: workflowid,
-                        xwenterprisenumber:conf.enterprise.enterprisenumber,
+                        xwenterprisenumber: conf.enterprise.enterprisenumber,
                         xwworkflowformname: workflowid + protocol,
                         xwcreatetime: 'getdate()',
                         xwsendtime: 'getdate()',
                         xwexpiredtime: 'getdate()',
-                        xwxmlcode: content,
+                        xwxmlcode: content.replace(/\'/g, "''"),
                         xwformtype: protocol.replace('.', '')
                     });
                 }))
@@ -91,17 +92,17 @@ module.exports = function() {
             var sqlContent = '',
                 deferred = Q.defer(),
                 _compiler = _.template(template);
-            
-            sqlContent +=conf.transaction.begin;
+
+            sqlContent += conf.transaction.begin;
             _.each(contents, function(content, index) {
-                sqlContent += _compiler(content);               
+                sqlContent += _compiler(content);
             });
-            sqlContent +=conf.transaction.end;
-            fs.writeFile(conf.fileName, sqlContent,'utf8', function (err,data) {
-                if (err) 
-                  deferred.reject(new Error(err)); 
+            sqlContent += conf.transaction.end;
+            fs.writeFile(conf.fileName, sqlContent, 'utf8', function(err, data) {
+                if (err)
+                    deferred.reject(new Error(err));
                 else
-                  deferred.resolve(true);
+                    deferred.resolve(true);
             });
             return deferred.promise;
         }

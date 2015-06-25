@@ -3,5 +3,5 @@ tasklist:
   workflowfile:
     output_name: '1.com_t_workflowform.import.sql'
     output_path: './output/'
-    transaction: 'com_t_workflowform_insert_transaction'
+    transaction: 'com_t_workflowform_transaction'
     description: '从PG数据库导入表单协议到MSSQL'
