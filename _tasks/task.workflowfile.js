@@ -11,19 +11,15 @@ module.exports = function() {
         del = require('del'),
         gulp = require('gulp'),
         path = require('path'),
-        _ = require('underscore'),
         map = require('map-stream'),
         uuid = require('node-uuid'),
         colors = require('colors/safe'),
         decompress = require('gulp-decompress'),
         template = require('../_templates/tpl.com_t_workflowform')(),
+        _compiler = require('../_utility/tool.compiler')(template),
         conf = require('../_utility/tool.conf')('workflowfile');
 
-    Q.fcall(function() { //第一步:设置默默绑定表达式
-        _.templateSettings = {
-            interpolate: /\{\{(.+?)\}\}/g
-        };
-    }).then(function() { //第二步:清理.tmp目录
+    Q.fcall(function() { //第一步:清理.tmp目录
         var deferred = Q.defer();
         del([conf.fileName, './.tmp'], function(err, paths) {
             if (err)
@@ -32,7 +28,7 @@ module.exports = function() {
                 deferred.resolve(true);
         });
         return deferred.promise;
-    }).then(function(success) { //第三步:解压表单文件到.tmp目录
+    }).then(function(success) { //第二步:解压表单文件到.tmp目录
         if (success) {
             var deferred = Q.defer();
             gulp.src('./_workflowfile/*.{tar,tar.bz2,tar.gz,zip}')
@@ -53,7 +49,7 @@ module.exports = function() {
                 });
             return deferred.promise;
         }
-    }).then(function(success) { //第四步:从output/workflow/files目录读取协议文件，生成Update或者Insert脚本
+    }).then(function(success) { //第三步:从output/workflow/files目录读取协议文件，生成Update或者Insert脚本
         if (success) {
             var contents = [],
                 deferred = Q.defer();
@@ -86,14 +82,13 @@ module.exports = function() {
                 });
             return deferred.promise;
         }
-    }).then(function(contents) { //第五步:根据协议内容生成Update或者Insert脚本
+    }).then(function(contents) { //第四步:根据协议内容生成Update或者Insert脚本
         if (contents) {
             var sqlContent = '',
-                deferred = Q.defer(),
-                _compiler = _.template(template);
+                deferred = Q.defer();
 
             sqlContent += conf.transaction.begin;
-            _.each(contents, function(content, index) {
+            contents.forEach(function(content, index) {
                 sqlContent += _compiler(content);
             });
             sqlContent += conf.transaction.end;
