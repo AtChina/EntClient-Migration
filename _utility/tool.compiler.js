@@ -5,10 +5,7 @@
  */
 module.exports = function(template) {
     'use strict';
-    var driver = {},
-        pg = require('pg'),
-        _ = require('underscore'),
-        node_mssql = require('node-mssql');
+    var _ = require('underscore');
 
     _.templateSettings = {
         interpolate: /\{\{(.+?)\}\}/g
