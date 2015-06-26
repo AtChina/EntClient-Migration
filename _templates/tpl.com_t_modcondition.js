@@ -1,0 +1,82 @@
+/**
+ * Author:      changyingwei
+ * Create Date: 2015-06-24
+ * Description: com_t_modcondition数据表
+ * inject:xwenterprisenumber
+ */
+module.exports = function() {
+    var template = "IF EXISTS(SELECT 1 FROM com_t_modcondition  WHERE xwconditid='{{xwconditid}}' and xwmodchildid='{{xwmodchildid}}')\r\n";
+    template += "   BEGIN\r\n";
+    template += "      UPDATE [dbo].[com_t_modcondition]\r\n";
+    template += "       SET [xwconditname] = '{{xwconditname}}'\r\n";
+    template += "          ,[xwinitdata] = '{{xwinitdata}}'\r\n";
+    template += "          ,[xwcontroltype] = '{{xwcontroltype}}'\r\n";
+    template += "          ,[xwoperator] = '{{xwoperator}}'\r\n";
+    template += "          ,[xwisnull] = '{{xwisnull}}'\r\n";
+    template += "          ,[xwisread] = '{{xwisread}}'\r\n";
+    template += "          ,[xwregextext] = '{{xwregextext}}'\r\n";
+    template += "          ,[xwtransfdata] = '{{xwtransfdata}}'\r\n";
+    template += "          ,[xwlength] = '{{xwlength}}'\r\n";
+    template += "          ,[xwordernumber] = '{{xwordernumber}}'\r\n";
+    template += "          ,[xwdatasourceid] = '{{xwdatasourceid}}'\r\n";
+    template += "          ,[xwcondittype] = '{{xwcondittype}}'\r\n";
+    template += "          ,[xwinitdatatype] = '{{xwinitdatatype}}'\r\n";
+    template += "          ,[xwisunique] = '{{xwisunique}}'\r\n";
+    template += "          ,[displaytype] = '{{displaytype}}'\r\n";
+    template += "          ,[dataformater] = '{{dataformater}}'\r\n";
+    template += "          ,[xwcolkey] = '{{xwcolkey}}'\r\n";
+    template += "          ,[xwcolumnpos] = '{{xwcolumnpos}}'\r\n";
+    template += "          ,[xwenterprisenumber] = '{{xwenterprisenumber}}'\r\n";
+    template += "     WHERE xwconditid='{{xwconditid}}' and xwmodchildid='{{xwmodchildid}}';\r\n";
+    template += "   END\r\n";
+    template += "ELSE\r\n";
+    template += "   BEGIN\r\n";
+    template += "       INSERT INTO [dbo].[com_t_modcondition]\r\n";
+    template += "           ([xwconditid]\r\n";
+    template += "           ,[xwmodchildid]\r\n";
+    template += "           ,[xwconditname]\r\n";
+    template += "           ,[xwsourcename]\r\n";
+    template += "           ,[xwinitdata]\r\n";
+    template += "           ,[xwcontroltype]\r\n";
+    template += "           ,[xwoperator]\r\n";
+    template += "           ,[xwisnull]\r\n";
+    template += "           ,[xwisread]\r\n";
+    template += "           ,[xwregextext]\r\n";
+    template += "           ,[xwtransfdata]\r\n";
+    template += "           ,[xwlength]\r\n";
+    template += "           ,[xwordernumber]\r\n";
+    template += "           ,[xwdatasourceid]\r\n";
+    template += "           ,[xwcondittype]\r\n";
+    template += "           ,[xwinitdatatype]\r\n";
+    template += "           ,[xwisunique]\r\n";
+    template += "           ,[displaytype]\r\n";
+    template += "           ,[dataformater]\r\n";
+    template += "           ,[xwcolkey]\r\n";
+    template += "           ,[xwcolumnpos]\r\n";
+    template += "           ,[xwenterprisenumber])\r\n";
+    template += "     VALUES\r\n";
+    template += "           ('{{xwconditid}}'\r\n";
+    template += "           ,'{{xwmodchildid}}'\r\n";
+    template += "           ,'{{xwconditname}}'\r\n";
+    template += "           ,'{{xwsourcename}}'\r\n";
+    template += "           ,'{{xwinitdata}}'\r\n";
+    template += "           ,'{{xwcontroltype}}'\r\n";
+    template += "           ,'{{xwoperator}}'\r\n";
+    template += "           ,'{{xwisnull}}'\r\n";
+    template += "           ,'{{xwisread}}'\r\n";
+    template += "           ,'{{xwregextext}}'\r\n";
+    template += "           ,'{{xwtransfdata}}'\r\n";
+    template += "           ,'{{xwlength}}'\r\n";
+    template += "           ,'{{xwordernumber}}'\r\n";
+    template += "           ,'{{xwdatasourceid}}'\r\n";
+    template += "           ,'{{xwcondittype}}'\r\n";
+    template += "           ,'{{xwinitdatatype}}'\r\n";
+    template += "           ,'{{xwisunique}}'\r\n";
+    template += "           ,'{{displaytype}}'\r\n";
+    template += "           ,'{{dataformater}}'\r\n";
+    template += "           ,'{{xwcolkey}}'\r\n";
+    template += "           ,'{{xwcolumnpos}}'\r\n";
+    template += "           ,'{{xwenterprisenumber}}');\r\n";
+    template += "   END\r\n";
+    return template;
+};

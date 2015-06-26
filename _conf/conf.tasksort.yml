@@ -1,4 +1,4 @@
-#基础设施配置
+#自动化任务执行顺序配置
 tasklist:
   - taskname: 'workflowfile'
     output_name: '1.com_t_workflowform.import.sql'

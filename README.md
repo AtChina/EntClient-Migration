@@ -41,34 +41,34 @@
 
 ###第五步:表单模块
 - [x] xwdirectory->com_t_directory
-- [ ] xwworkflow->com_t_workflow
-- [ ] [旧结构文件]-->com_t_workflowform
-- [ ] xwworkflowlink->com_t_workflowlink
+- [x] xwworkflow->com_t_workflow
+- [x] [旧结构文件]-->com_t_workflowform
+- [x] xwworkflowlink->com_t_workflowlink
 - [ ] [旧结构没有]->com_t_workflowrole
 
 ###第六步:模块配置模块
-- [ ] xwmodcondition->com_t_modcondition
-- [ ] xwmodfunction->com_t_modfunction
-- [ ] xwmodular->com_t_modular
-- [ ] xwmodularchild->com_t_modularchild
+- [x] xwmodcondition->com_t_modcondition
+- [x] xwmodfunction->com_t_modfunction
+- [x] xwmodular->com_t_modular
+- [x] xwmodularchild->com_t_modularchild
 
 ###第七步:报表模块
-- [ ] xwstatiticsdatasourse->com_t_statiticsdatasourse
-- [ ] xwstatisticsort->com_t_statisticsort
-- [ ] xwstatistics->com_t_statistics
-- [ ] xwsrcdatacollect->com_t_srcdatacollect
-- [ ] xwreport->com_t_report
-- [ ] xwcondition->com_t_condition
-- [ ] xwdataseries->com_t_dataseries
+- [x] xwstatiticsdatasourse->com_t_statiticsdatasourse
+- [x] xwstatisticsort->com_t_statisticsort
+- [x] xwstatistics->com_t_statistics
+- [x] xwsrcdatacollect->com_t_srcdatacollect
+- [x] xwreport->com_t_report
+- [x] xwcondition->com_t_condition
+- [x] xwdataseries->com_t_dataseries
 
 ###第八步:地图模块
-- [ ] xwmapappsetting->com_t_mapappsetting
+- [x] xwmapappsetting->com_t_mapappsetting
 
 ###第九步:导入模块
-- [ ] xwimpexpconfig->com_t_impexpconfig
+- [x] xwimpexpconfig->com_t_impexpconfig
 
 ###第十步:权限模块
-- [ ] xwuserrole->com_t_userrole
-- [ ] xwroledepts->com_t_roledept
-- [ ] xwfunctionrole->com_t_rolefunction
-- [ ] xwdatafile->com_t_datafile
+- [x] xwuserrole->com_t_userrole
+- [x] xwroledepts->com_t_roledept
+- [x] xwfunctionrole->com_t_rolefunction
+- [x] xwdatafile->com_t_datafile

@@ -6,20 +6,38 @@
 module.exports = function() {
     'use strict';
     return {
-        department: require('./task.department'), //数据源迁移任务
-        users: require('./task.users'), //数据源迁移任务
-        roles: require('./task.roles'), //数据源迁移任务
-        menu: require('./task.menu'), //数据源迁移任务
-        func: require('./task.func'), //数据源迁移任务
-        datasourceconfig: require('./task.datasourceconfig'), //数据源迁移任务
-        datasourcegroup: require('./task.datasourcegroup'), //数据源迁移任务
-        datasource: require('./task.datasource'), //数据源迁移任务
-        field: require('./task.field'), //数据源迁移任务
-        localdatasource: require('./task.localdatasource'), //数据源迁移任务
-        localfield: require('./task.localfield'), //数据源迁移任务
-        directory: require('./task.directory'), //数据源迁移任务
-        workflow: require('./task.workflow'), //表单文件迁移任务
-        workflowfile: require('./task.workflowfile'), //表单文件迁移任务
-        default: 'TODO:' //默认执行所有任务
+        department: require('./task.department'),
+        users: require('./task.users'),
+        roles: require('./task.roles'),
+        menu: require('./task.menu'),
+        func: require('./task.func'),
+        datasourceconfig: require('./task.datasourceconfig'),
+        datasourcegroup: require('./task.datasourcegroup'),
+        datasource: require('./task.datasource'),
+        field: require('./task.field'),
+        localdatasource: require('./task.localdatasource'),
+        localfield: require('./task.localfield'),
+        directory: require('./task.directory'),
+        workflow: require('./task.workflow'),
+        workflowform: require('./task.workflowform'),
+        workflowlink: require('./task.workflowlink'),
+        modular: require('./task.modular'),
+        modularchild: require('./task.modularchild'),
+        modfunction: require('./task.modfunction'),
+        modcondition: require('./task.modcondition'),
+        statiticsdatasourse: require('./task.statiticsdatasourse'),
+        statisticsort: require('./task.statisticsort'),
+        statistics: require('./task.statistics'),
+        mapappsetting: require('./task.mapappsetting'),
+        srcdatacollect: require('./task.srcdatacollect'),
+        report: require('./task.report'),
+        condition: require('./task.condition'),
+        dataseries: require('./task.dataseries'),
+        impexpconfig: require('./task.impexpconfig'),
+        userrole: require('./task.userrole'),
+        roledept: require('./task.roledept'),
+        rolefunction: require('./task.rolefunction'),
+        datafile: require('./task.datafile'),
+        default: require('./task.all')
     };
 };
