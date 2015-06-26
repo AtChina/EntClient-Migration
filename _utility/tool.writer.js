@@ -9,11 +9,12 @@ module.exports = function(template, contents, conf) {
     var Q = require('q'),
         fs = require('fs'),
         del = require('del'),
-        gulp = require('gulp');
+        gulp = require('gulp'),
+        _compiler = require(__dirname + '/tool.compiler')(template);
 
     Q.fcall(function() { //第一步:清理file
         var deferred = Q.defer();
-        del([conf.fileName, ], function(err, paths) {
+        del([conf.fileName], function(err, paths) {
             if (err)
                 deferred.reject(new Error(err));
             else
@@ -22,22 +23,23 @@ module.exports = function(template, contents, conf) {
         return deferred.promise;
     }).then(function(success) {
         if (success) {
-            var _compiler = null,
-                sqlContent = '',
+            var sqlContent = '',
                 deferred = Q.defer();
 
             try {
-                _compiler = require('../_utility/tool.compiler')(template);
-                sqlContent += conf.transaction.begin;
-                contents.forEach(function(content, index) {
-                    sqlContent += _compiler(content);
-                });
-                sqlContent += conf.transaction.end;
+                if (contents.length > 0) {
+                    sqlContent += conf.transaction.begin;
+                    contents.forEach(function(content, index) {
+                        sqlContent += _compiler(content);
+                    });
+                    sqlContent += conf.transaction.end;
+                }
                 deferred.resolve(sqlContent);
             } catch (err) {
                 console.error(err);
                 deferred.reject(new Error(err));
             }
+            return deferred.promise;
         }
     }).then(function(sqlContent) {
         if (sqlContent) {
@@ -48,6 +50,7 @@ module.exports = function(template, contents, conf) {
                 else
                     deferred.resolve(true);
             });
+            return deferred.promise;
         }
     }).catch(function(error) {
         console.log(error); //处理错误

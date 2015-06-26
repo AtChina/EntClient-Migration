@@ -15,10 +15,9 @@ module.exports = function() {
         uuid = require('node-uuid'),
         colors = require('colors/safe'),
         decompress = require('gulp-decompress'),
+        conf = require('../_utility/tool.conf')(),
         writer = require('../_utility/tool.writer'),
-        template = require('../_templates/tpl.com_t_workflowform')(),
-        _compiler = require('../_utility/tool.compiler')(template),
-        conf = require('../_utility/tool.conf')('workflowfile');
+        template = require('../_templates/tpl.com_t_workflowform')();
 
     Q.fcall(function() { //第一步:清理.tmp目录
         var deferred = Q.defer();
@@ -85,22 +84,7 @@ module.exports = function() {
         }
     }).then(function(contents) { //第四步:根据协议内容生成Update或者Insert脚本
         if (contents) {
-            var sqlContent = '',
-                deferred = Q.defer();
-
-            sqlContent += conf.transaction.begin;
-            contents.forEach(function(content, index) {
-                sqlContent += _compiler(content);
-            });
-            sqlContent += conf.transaction.end;
-            fs.writeFile(conf.fileName, sqlContent, 'utf8', function(err, data) {
-                if (err)
-                    deferred.reject(new Error(err));
-                else
-                    deferred.resolve(true);
-            });
-            return deferred.promise;
-            // writer(template, contents, conf);
+            writer(template, contents, conf);
         }
     }).catch(function(error) {
         console.log(colors.red.bold(error)); //处理错误
