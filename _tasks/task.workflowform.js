@@ -15,13 +15,14 @@ module.exports = function() {
         uuid = require('node-uuid'),
         colors = require('colors/safe'),
         decompress = require('gulp-decompress'),
+        writer = require('../_utility/tool.writer'),
         template = require('../_templates/tpl.com_t_workflowform')(),
         _compiler = require('../_utility/tool.compiler')(template),
         conf = require('../_utility/tool.conf')('workflowfile');
 
     Q.fcall(function() { //第一步:清理.tmp目录
         var deferred = Q.defer();
-        del([conf.fileName, './.tmp'], function(err, paths) {
+        del(['./.tmp'], function(err, paths) {
             if (err)
                 deferred.reject(new Error(err));
             else
@@ -99,6 +100,7 @@ module.exports = function() {
                     deferred.resolve(true);
             });
             return deferred.promise;
+            // writer(template, contents, conf);
         }
     }).catch(function(error) {
         console.log(colors.red.bold(error)); //处理错误
