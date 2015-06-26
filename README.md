@@ -40,7 +40,7 @@
 - [x] xwlocalfield->com_t_localfield
 
 ###第五步:表单模块
-- [ ] xwdirectory->com_t_directory
+- [x] xwdirectory->com_t_directory
 - [ ] xwworkflow->com_t_workflow
 - [ ] [旧结构文件]-->com_t_workflowform
 - [ ] xwworkflowlink->com_t_workflowlink

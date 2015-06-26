@@ -18,6 +18,7 @@ module.exports = function() {
         localdatasource: require('./task.localdatasource'), //数据源迁移任务
         localfield: require('./task.localfield'), //数据源迁移任务
         directory: require('./task.directory'), //数据源迁移任务
+        workflow: require('./task.workflow'), //表单文件迁移任务
         workflowfile: require('./task.workflowfile'), //表单文件迁移任务
         default: 'TODO:' //默认执行所有任务
     };

@@ -9,21 +9,42 @@ module.exports = function(dbConf) {
         pg = require('pg'),
         mysql = require('mysql'),
         mssql = require('mssql'),
-        _ = require('underscore'),
-        node_mssql = require('node-mssql');
+        _ = require('underscore');
 
     _.each(dbConf, function(conf, index) {
+        driver[conf.dbname] = {};
         switch (conf.dbtype) {
             case 'sqlserver':
-                // driver[conf.dbname] = new node_mssql.Request(conf); //废弃，语法单一不适合复查语句
-                driver[conf.dbname] = {};
-                driver[conf.dbname].Request = mssql.Request;
-                driver[conf.dbname].Connection = function() {
-                    return new mssql.Connection(conf);
+                driver[conf.dbname].query = function(sqlContent, callback) {
+                    var connection = new mssql.Connection(conf);
+                    connection.connect(function(err) {
+                        var req = new mssql.Request(connection);
+                        req.query(sqlContent, function(err, recordset) {
+                            callback(err, recordset);
+                            if (err)
+                                console.error(err);
+                            connection.close();
+                        });
+                        if (err) {
+                            console.error(err);
+                            connection.close();
+                        }
+                    });
                 };
                 break;
             case 'postgres':
-                driver[conf.dbname] = new pg.Client(conf);
+                driver[conf.dbname].query = function(sqlContent, callback) {
+                    var client = new pg.Client(conf);
+                    client.connect();
+                    client.query(sqlContent, function(err, recordset) {
+                            callback(err, recordset.rows);
+                            if (err)
+                                console.error(err);
+                        })
+                        .on('end', function() {
+                            client.end();
+                        });
+                };
                 break;
         }
     });
