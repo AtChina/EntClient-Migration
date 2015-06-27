@@ -10,8 +10,8 @@ module.exports = function(template, contents, conf) {
         fs = require('fs'),
         del = require('del'),
         gulp = require('gulp'),
+        util = require('util'),
         _ = require('underscore'),
-        colors = require('colors/safe'),
         _compiler = require(__dirname + '/tool.compiler')(template);
 
     Q.fcall(function() { //第一步:清理SQL文件
@@ -57,12 +57,10 @@ module.exports = function(template, contents, conf) {
         }
     }).then(function(success) {
         if (success) {
-            console.log(colors.green.bold('Finish：' + conf.fileName));
-        } else {
-            console.log(colors.red.bold('Fail:' + error)); //处理错误
+            process.stdout.write(util.format('\x1b[32m%s\x1b[0m', 'Finish：' + conf.fileName + '\n\n'));
         }
     }).catch(function(error) {
-        console.log(colors.red.bold(error)); //处理错误
+        process.stdout.write(util.format('\x1b[31m%s\x1b[0m', 'Fail: ' + error + '\n\n')); //处理错误
     }).finally(function() {
         //TODO
     }).done();
