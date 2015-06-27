@@ -61,20 +61,28 @@ module.exports = function(template, contents, conf) {
         if (sqlContent) {
             var deferred = Q.defer();
             fs.writeFile(conf.fileName, sqlContent, 'utf8', function(err, data) {
-                if (err)
+                if (err) {
                     deferred.reject(new Error(err));
-                else
+                } else {
                     deferred.resolve(true);
+                }
             });
             return deferred.promise;
         }
     }).then(function(success) {
         if (success) {
-            process.stdout.write(util.format('\x1b[32m%s\x1b[0m', 'Finish：' + conf.fileName + '\n\n'));
+            if (process.send) {
+                process.send('Finish');
+            } else {
+                process.stdout.write(util.format('\x1b[32m%s\x1b[0m', 'Finish：' + conf.fileName + '\n'));
+            }
         }
     }).catch(function(error) {
-        process.stdout.write(util.format('\x1b[31m%s\x1b[0m', 'Fail: ' + error + '\n\n')); //处理错误
-    }).finally(function() {
-        //TODO
+        if (process.send && error) {
+            process.send('Fail');
+        }
+        process.stdout.write(util.format('\x1b[31m%s\x1b[0m', '\nFail: ' + error + '\n')); //处理错误
+    }).finally(function(error) {
+        // TODO:
     }).done();
 };

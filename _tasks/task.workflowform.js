@@ -12,7 +12,6 @@ module.exports = function() {
         path = require('path'),
         map = require('map-stream'),
         uuid = require('node-uuid'),
-        colors = require('colors/safe'),
         decompress = require('gulp-decompress'),
         conf = require('../_utility/tool.conf')(),
         template = conf.readTemplate('tpl.com_t_workflowform.js');
@@ -83,7 +82,7 @@ module.exports = function() {
     }).then(function(contents) { //第四步:根据协议内容生成Update或者Insert脚本
         conf.writeFile(template, contents);
     }).catch(function(error) {
-        console.log(colors.red.bold(error)); //处理错误
+        process.stdout.write(util.format('\x1b[31m%s\x1b[0m', 'Fail: ' + error + '\n\n')); //处理错误
     }).finally(function(success) {
         del(['./.tmp']); //最后清除临时文件
     }).done();
