@@ -1,5 +1,20 @@
 #企业信息配置
-enterprisenumber: 1008413           #企业E号
-managermanid: 629991                #维护人员E号
 xwsystemcode: 'SYS10001'            #业务系统编码
-enterprisename: '企业端自动化升级'    #企业名称
+xwenterprisenumber: 1008413         #企业E号
+managermanid: 629991                #维护人员E号
+xwviagrateway: 0
+xwpriority: 0
+xwcachetime: 0
+xwtype: 0
+functionid: 0
+systemcode: ''
+xwallowdarwing: 0
+parentcode: 0
+roledeptid: 0
+departmentid: ''
+rolefunctionid: ''
+userroleid: ''
+enterpriseid: 0
+usernumber: 0
+xwfunctioncode: ''
+xwfunctionname: ''

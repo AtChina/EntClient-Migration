@@ -10,6 +10,8 @@ module.exports = function(template, contents, conf) {
         fs = require('fs'),
         del = require('del'),
         gulp = require('gulp'),
+        _ = require('underscore'),
+        colors = require('colors/safe'),
         _compiler = require(__dirname + '/tool.compiler')(template);
 
     Q.fcall(function() { //第一步:清理SQL文件
@@ -30,6 +32,7 @@ module.exports = function(template, contents, conf) {
                 if (contents.length > 0) {
                     sqlContent += conf.transaction.begin;
                     contents.forEach(function(content, index) {
+                        content = _.extend(content, conf.enterprise); //注入企业默认配置信息
                         sqlContent += _compiler(content);
                     });
                     sqlContent += conf.transaction.end;
@@ -41,7 +44,7 @@ module.exports = function(template, contents, conf) {
             }
             return deferred.promise;
         }
-    }).then(function(sqlContent) { //第二步:导出SQL文件
+    }).then(function(sqlContent) { //第三步:导出SQL文件
         if (sqlContent) {
             var deferred = Q.defer();
             fs.writeFile(conf.fileName, sqlContent, 'utf8', function(err, data) {
@@ -52,9 +55,13 @@ module.exports = function(template, contents, conf) {
             });
             return deferred.promise;
         }
+    }).then(function(success) {
+        if (success) {
+            console.log(colors.green.bold('Finish：' + conf.fileName));
+        } else {
+            console.log(colors.red.bold('Fail:' + error)); //处理错误
+        }
     }).catch(function(error) {
-        console.log(error); //处理错误
-    }).finally(function(success) {
-        //TODO:
+        console.log(colors.red.bold(error)); //处理错误
     }).done();
 };

@@ -9,6 +9,7 @@ module.exports = function() {
     var conf = {},
         taskConf = {},
         sortNumber = 0,
+        fs = require('fs'),
         path = require('path'),
         _ = require('underscore'),
         yamljs = require('yamljs'),
@@ -28,5 +29,16 @@ module.exports = function() {
     }
     taskConf.enterprise = enterprise || {};
     taskConf.database = require(__dirname + '/tool.driver')(database);
+    taskConf.readSqlContent = function(filePath) {
+        return fs.readFileSync(process.cwd() + '/_sqls/' + filePath, {
+            encoding: 'utf8'
+        }).toString();
+    }
+    taskConf.readTemplate = function(filePath) {
+        return require(process.cwd() + '/_templates/' + filePath)();
+    }
+    taskConf.writeFile = function(template, contents) {
+        require(__dirname + '/tool.writer')(template, contents, taskConf);
+    }
     return taskConf;
 };

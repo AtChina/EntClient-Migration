@@ -1,0 +1,1 @@
+SELECT * FROM xwdatafile limit 1;

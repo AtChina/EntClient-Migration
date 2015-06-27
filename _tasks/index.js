@@ -7,8 +7,8 @@ module.exports = function() {
     'use strict';
     return {
         department: require('./task.department'),
-        users: require('./task.users'),
-        roles: require('./task.roles'),
+        userinfo: require('./task.userinfo'),
+        role: require('./task.role'),
         menu: require('./task.menu'),
         func: require('./task.func'),
         datasourceconfig: require('./task.datasourceconfig'),

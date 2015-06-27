@@ -7,7 +7,6 @@ module.exports = function() {
     'use strict';
 
     var Q = require('q'),
-        fs = require('fs'),
         del = require('del'),
         gulp = require('gulp'),
         path = require('path'),
@@ -62,7 +61,7 @@ module.exports = function() {
                     callback(null, {
                         xwworkflowformid: uuid.v4(),
                         xwworkflowid: workflowid,
-                        xwenterprisenumber: conf.enterprise.enterprisenumber,
+                        xwenterprisenumber: conf.enterprise.xwenterprisenumber,
                         xwworkflowformname: workflowid + protocol,
                         xwcreatetime: 'getdate()',
                         xwsendtime: 'getdate()',
@@ -83,9 +82,7 @@ module.exports = function() {
             return deferred.promise;
         }
     }).then(function(contents) { //第四步:根据协议内容生成Update或者Insert脚本
-        if (contents) {
-            writer(template, contents, conf);
-        }
+        writer(template, contents, conf);
     }).catch(function(error) {
         console.log(colors.red.bold(error)); //处理错误
     }).finally(function(success) {

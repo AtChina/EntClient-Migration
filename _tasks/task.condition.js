@@ -2,27 +2,21 @@
  * Author:      changyingwei
  * Create Date: 2015-06-25
  * Description: com_t_condition表数据迁移
+ * inject:xwenterprisenumber
  */
 module.exports = function() {
     'use strict';
 
-    var fs = require('fs'),
-        del = require('del'),
-        gulp = require('gulp'),
-        path = require('path'),
-        _ = require('underscore'),
-        conf = require('../_utility/tool.conf')(),
+    var conf = require('../_utility/tool.conf')(),
         postgres = conf.database.xuanwuenterprise,
-        sqlserver = conf.database.xw_dc_enterprise;
+        sqlserver = conf.database.xw_dc_enterprise,
+        template = conf.readTemplate('tpl.com_t_condition.js'),
+        sqlContent = conf.readSqlContent('sql.com_t_condition.txt');
 
-    postgres.query("SELECT * FROM xwcondition limit 1;", function(err, result) {
-        console.log('=============================postgres=============================');
-        console.log(result);
-        console.log('=============================postgres=============================');
+    postgres.query(sqlContent, function(err, result) {
+        conf.writeFile(template, result);
     });
-    sqlserver.query('select top 1 * from dbo.com_t_condition;', function(err, result) {
-        console.log('=============================sqlserver=============================');
-        console.log(result);
-        console.log('=============================sqlserver=============================');
-    });
+    // sqlserver.query('select top 1 * from dbo.com_t_condition;', function(err, result) {
+    //     console.log(result);
+    // });
 };

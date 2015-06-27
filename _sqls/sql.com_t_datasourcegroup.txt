@@ -1,0 +1,1 @@
+SELECT * FROM xwdatasourcegroup limit 1;

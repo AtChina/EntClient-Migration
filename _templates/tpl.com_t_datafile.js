@@ -2,7 +2,7 @@
  * Author:      changyingwei
  * Create Date: 2015-06-24
  * Description: com_t_datafile数据表
- * inject:xwenterprisenumber，systemcode
+ * inject:xwenterprisenumber，xwsystemcode
  */
 module.exports = function() {
     var template = "IF EXISTS(SELECT 1 FROM com_t_datafile  WHERE xwfileid='{{xwfileid}}')\r\n";
@@ -20,7 +20,7 @@ module.exports = function() {
     template += "          ,[xwupdatedate] = '{{xwupdatedate}}'\r\n";
     template += "          ,[xwupdateby] = '{{xwupdateby}}'\r\n";
     template += "          ,[xwautoupdate] = '{{xwautoupdate}}'\r\n";
-    template += "          ,[systemcode] = '{{systemcode}}'\r\n";
+    template += "          ,[systemcode] = '{{xwsystemcode}}'\r\n";
     template += "     WHERE xwfileid='{{xwfileid}}';\r\n";
     template += "   END\r\n";
     template += "ELSE\r\n";
@@ -54,7 +54,7 @@ module.exports = function() {
     template += "           ,'{{xwupdatedate}}'\r\n";
     template += "           ,'{{xwupdateby}}'\r\n";
     template += "           ,'{{xwautoupdate}}'\r\n";
-    template += "           ,'{{systemcode}}');\r\n";
+    template += "           ,'{{xwsystemcode}}');\r\n";
     template += "   END\r\n";
     return template;
 };
