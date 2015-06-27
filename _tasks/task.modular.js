@@ -1,7 +1,7 @@
 /**
  * Author:      changyingwei
  * Create Date: 2015-06-25
- * Description: com_t_modular
+ * Description: com_t_modular数据源迁移
  */
 module.exports = function() {
     'use strict';

@@ -1,7 +1,7 @@
 /**
  * Author:      changyingwei
  * Create Date: 2015-06-25
- * Description: 
+ * Description: SQL文件生成器
  */
 module.exports = function(template, contents, conf) {
     'use strict';
@@ -12,7 +12,7 @@ module.exports = function(template, contents, conf) {
         gulp = require('gulp'),
         _compiler = require(__dirname + '/tool.compiler')(template);
 
-    Q.fcall(function() { //第一步:清理file
+    Q.fcall(function() { //第一步:清理SQL文件
         var deferred = Q.defer();
         del([conf.fileName], function(err, paths) {
             if (err)
@@ -21,7 +21,7 @@ module.exports = function(template, contents, conf) {
                 deferred.resolve(true);
         });
         return deferred.promise;
-    }).then(function(success) {
+    }).then(function(success) { //第二步:使用compiler绑定模板数据
         if (success) {
             var sqlContent = '',
                 deferred = Q.defer();
@@ -41,7 +41,7 @@ module.exports = function(template, contents, conf) {
             }
             return deferred.promise;
         }
-    }).then(function(sqlContent) {
+    }).then(function(sqlContent) { //第二步:导出SQL文件
         if (sqlContent) {
             var deferred = Q.defer();
             fs.writeFile(conf.fileName, sqlContent, 'utf8', function(err, data) {
