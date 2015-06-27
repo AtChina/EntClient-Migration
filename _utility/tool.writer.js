@@ -63,5 +63,7 @@ module.exports = function(template, contents, conf) {
         }
     }).catch(function(error) {
         console.log(colors.red.bold(error)); //处理错误
+    }).finally(function() {
+        //TODO
     }).done();
 };
