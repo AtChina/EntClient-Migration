@@ -19,7 +19,7 @@ module.exports = function() {
 
     Q.fcall(function() { //第一步:清理.tmp目录
         var deferred = Q.defer();
-        del(['./.tmp'], function(err, paths) {
+        del(['./.tmp/*'], function(err, paths) {
             if (err)
                 deferred.reject(new Error(err));
             else
