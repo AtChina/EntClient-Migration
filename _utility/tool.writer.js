@@ -9,7 +9,6 @@ module.exports = function(template, contents, conf) {
     var Q = require('q'),
         fs = require('fs'),
         del = require('del'),
-        gulp = require('gulp'),
         util = require('util'),
         _ = require('underscore'),
         _compiler = require(__dirname + '/tool.compiler')(template);
@@ -44,7 +43,21 @@ module.exports = function(template, contents, conf) {
             }
             return deferred.promise;
         }
-    }).then(function(sqlContent) { //第三步:导出SQL文件
+    }).then(function(sqlContent) { //第三步:检测导出文件目录是否存在
+        if (sqlContent) {
+            var deferred = Q.defer();
+            fs.exists('./output/', function(exists) {
+                if (exists) {
+                    deferred.resolve(sqlContent);
+                } else {
+                    fs.mkdir('./output/', function() {
+                        deferred.resolve(sqlContent);
+                    });
+                }
+            });
+            return deferred.promise;
+        }
+    }).then(function(sqlContent) { //第四步：导出SQL文件
         if (sqlContent) {
             var deferred = Q.defer();
             fs.writeFile(conf.fileName, sqlContent, 'utf8', function(err, data) {

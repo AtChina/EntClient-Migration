@@ -15,8 +15,7 @@ module.exports = function() {
         colors = require('colors/safe'),
         decompress = require('gulp-decompress'),
         conf = require('../_utility/tool.conf')(),
-        writer = require('../_utility/tool.writer'),
-        template = require('../_templates/tpl.com_t_workflowform')();
+        template = conf.readTemplate('tpl.com_t_workflowform.js');
 
     Q.fcall(function() { //第一步:清理.tmp目录
         var deferred = Q.defer();
@@ -34,7 +33,7 @@ module.exports = function() {
                 .pipe(decompress({
                     strip: 1
                 }))
-                .pipe(gulp.dest('./.tmp'))
+                .pipe(gulp.dest('./.tmp/'))
                 .on('finish', function() {
                     del(['./.tmp/workflow.xml', './.tmp/localdatasource.xml', './.tmp/datasourceconfig.xml'], function(err, paths) {
                         if (err)
@@ -82,7 +81,7 @@ module.exports = function() {
             return deferred.promise;
         }
     }).then(function(contents) { //第四步:根据协议内容生成Update或者Insert脚本
-        writer(template, contents, conf);
+        conf.writeFile(template, contents);
     }).catch(function(error) {
         console.log(colors.red.bold(error)); //处理错误
     }).finally(function(success) {

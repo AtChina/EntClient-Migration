@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<f i="cc09b765-9fd7-4862-8500-dad0f23ed5e4" t="客户信息" fo="1160031864" ip="0" ds="" q="0" e="" k="" tk="" onback="" onload="menu:1171034192" ps="" bg="">
+  <e i="445481999" v="" c="判断" m="100" l="n" k="RegionCount" q="0" vi="0" rd="1" ec="0" na="1" onchange="" onfocus="" onblur="" focus="0"/>
+  <le i="1224666905" v="" c="RegionCount" k="逻辑控件0">$RegionCount#gt0</le><b />
+  <lk i="1165358472" h="$RegionCount#;gt;0;xw-affairs://310e5cb0-8207-4d84-ae96-46f5f4fdb57d|xw-affairs://0a571587-0c4a-4ab4-b3b8-a4374bf095c6" c="客户信息" op="1" cp="1" ts="0" v="" k="链接控件7" q="0" vi="0" rd="0" ec="0" na="0" onclick=""/>
+  <menu i="431112614" v="" c="" k="" q="0" vi="1" rd="0" ec="0">
+    <item  i="1171034192" c="加载" v="" k="" q="0" vi="0" rd="0" ec="0">
+      <step op="24" ds="aac2b855-c406-4bdb-acfb-66fd8a08c36b" dm="-1" id="" st="0" i="1238328860" v="" c="查询数据" k="" q="0" vi="1" rd="0" ec="0" ds2="" se="2" vt="0" j="0" sr="0" cl="" url="" pr=""/>
+      <step op="8" ds="" dm="-1" id="1165358472" st="0" i="42164576" v="" c="关联链接" k="" q="0" vi="1" rd="0" ec="0" ds2="" se="2" vt="0" j="0" sr="0" cl="" url="" pr=""/>
+    </item>
+    <item  i="821119748" c="结束" v="" k="" q="0" vi="0" rd="0" ec="0">
+      <step op="11" ds="" dm="" id="" st="0" i="1385262112" v="" c="结束" k="" q="0" vi="1" rd="0" ec="0" ds2="" se="2" vt="0" j="" sr="" cl="" url="" pr=""/>
+    </item>
+  </menu>
+  <data>
+    <m i="aac2b855-c406-4bdb-acfb-66fd8a08c36b" c="行政区域_判断是否有数据" op="2" tb="TBasRegionRight" v="" k="数据源映射5" q="0" vi="1" rd="0" ec="0" enc="0" sms="0" sql="SELECT  Count(RegionID) as RegionCount from {TBasRegionRight}">
+
+        <p n="RegionID" c="RegionID" v="" r="-1" io="o"/>
+  </m>
+  </data>
+</f>
