@@ -9,6 +9,7 @@ module.exports = function() {
     var Q = require('q'),
         del = require('del'),
         gulp = require('gulp'),
+        util = require('util'),
         path = require('path'),
         map = require('map-stream'),
         uuid = require('node-uuid'),

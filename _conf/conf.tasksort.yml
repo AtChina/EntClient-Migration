@@ -65,6 +65,7 @@
   transaction: 'com_t_workflow_transaction'
   description: 'import data to com_t_workflow table'
 - taskname: 'workflowform'
+  batch_size: 100
   output_name: 'com_t_workflowform.sql'
   output_path: './output/'
   transaction: 'com_t_workflowform_transaction'

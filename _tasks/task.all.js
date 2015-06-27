@@ -26,18 +26,21 @@ module.exports = function() {
         bar.tick();
         _.each(taskNames, function(taskName, index) {
             child.fork('index.js', [taskName]).on('message', function(message) {
-                bar.tick();
-                if (message === 'Finish') {
+                if (parseInt(message))
+                    bar.total += (message ? message : 0);
+                else if (message === 'Finish')
                     messages.successed++;
-                } else {
+                else
                     messages.failed++;
-                }
+
+                bar.tick();
                 if (bar.complete) {
                     process.stdout.write('\n');
                     process.stdout.write(util.format('\x1b[36m%s', '  SUMMARY:\n         '));
                     process.stdout.write(util.format('\x1b[32m%s\x1b[0m', 'Finish：' + messages.successed + '  '));
                     process.stdout.write(util.format('\x1b[31m%s\x1b[0m', 'Fail: ' + messages.failed + '\n\n'));
                 }
+
             });
         });
     });
