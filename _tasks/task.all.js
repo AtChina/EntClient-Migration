@@ -1,7 +1,7 @@
 /**
  * Author:      changyingwei
  * Create Date: 2015-06-26
- * Description: 多线程执行所有个任务
+ * Description: 多线程执行所有任务
  */
 module.exports = function() {
     var taskList = this,
@@ -17,9 +17,9 @@ module.exports = function() {
         taskNames = _.without(_.keys(taskList), 'default');
 
     del(['./output/*'], function(err, paths) {
-        var bar = new ProgressBar('  tasks progressing [:bar] :percent :etas', {
+        var bar = new ProgressBar('  tasks progressing [:bar] :percent :elapseds', {
             complete: '=',
-            incomplete: ' ',
+            incomplete: '-',
             width: 35,
             total: taskNames.length + 1
         });
