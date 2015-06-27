@@ -40,7 +40,6 @@ module.exports = function() {
                     process.stdout.write(util.format('\x1b[32m%s\x1b[0m', 'Finish：' + messages.successed + '  '));
                     process.stdout.write(util.format('\x1b[31m%s\x1b[0m', 'Fail: ' + messages.failed + '\n\n'));
                 }
-
             });
         });
     });
