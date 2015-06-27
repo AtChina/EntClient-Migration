@@ -41,7 +41,7 @@ module.exports = function() {
     template += "           ,'{{xwcreatetime}}'\r\n";
     template += "           ,'{{xwmodkey}}'\r\n";
     template += "           ,'{{xwprimarykey}}'\r\n";
-    template += "           ,'{{xwsystemcode}}'');\r\n";
+    template += "           ,'{{xwsystemcode}}');\r\n";
     template += "   END\r\n";
     return template;
 };

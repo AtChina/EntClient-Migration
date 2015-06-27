@@ -12,7 +12,7 @@ module.exports = function() {
     template += "          ,[xwdatasourcetype] = {{xwdatasourcetype}}\r\n"
     template += "          ,[xwdatasourcename] = {{xwdatasourcename}}\r\n"
     template += "          ,[xwurl] = {{xwurl}}\r\n"
-    template += "          ,[xwdescription] = {{xwdescription}}\r\n"
+    template += "          ,[xwdescription] = '{{xwdescription}}'\r\n"
     template += "          ,[xwpushtype] = {{xwpushtype}}\r\n"
     template += "          ,[xwstatus] = {{xwstatus}}\r\n"
     template += "          ,[xwcreateby] = {{xwcreateby}}\r\n"

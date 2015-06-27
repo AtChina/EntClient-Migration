@@ -9,7 +9,7 @@ IF EXISTS(SELECT 1 FROM com_t_datasource  WHERE xwdatasourceid='03feeb5a-b6d1-47
           ,[xwdatasourcename] = 离线文件下载-我的门店220130107034108
           ,[xwurl] = Data Source=10.10.0.162;Initial Catalog=XwDistribution_1002420;Persist Security Info=True;User ID=Distribution;Password=Distribution2@1@;Max Pool Size=100;Min Pool 
 Size=20
-          ,[xwdescription] = select  
+          ,[xwdescription] = 'select  
 [UserNumber]          
       ,[Guid]          
       ,[StoreID]          
@@ -59,18 +59,18 @@ Size=20
 ,col3 as xwlon      
 ,col4 as xwlat
 ,convert(varchar(10),NextTime,23) as IsToday 
-,case    when fax='是' and col20='经销商'   then '7' 
-  when fax='否' and col20='经销商'   then '8'  
-  when fax='否' and col1>=0 and col1<30 then '4' 
-  when fax='否' and col1>=30 and col1<100  then '5' 
-  when fax='否' and col1>=100 then '6' 
-  when fax='是' and col1>=0 and col1<30 then '1' 
-  when fax='是'and col1>=30 and col1<100 then '2' 
-  when fax='是' and col1>=100   then '3' 
+,case    when fax=''是'' and col20=''经销商''   then ''7'' 
+  when fax=''否'' and col20=''经销商''   then ''8''  
+  when fax=''否'' and col1>=0 and col1<30 then ''4'' 
+  when fax=''否'' and col1>=30 and col1<100  then ''5'' 
+  when fax=''否'' and col1>=100 then ''6'' 
+  when fax=''是'' and col1>=0 and col1<30 then ''1'' 
+  when fax=''是''and col1>=30 and col1<100 then ''2'' 
+  when fax=''是'' and col1>=100   then ''3'' 
 
  end as xwstoretype 
 from VMonStoreLoad
-where UserNumber=@UserNumber
+where UserNumber=@UserNumber'
           ,[xwpushtype] = 0
           ,[xwstatus] = 1
           ,[xwcreateby] = 208434
@@ -170,14 +170,14 @@ Size=20'
 ,col3 as xwlon      
 ,col4 as xwlat
 ,convert(varchar(10),NextTime,23) as IsToday 
-,case    when fax='是' and col20='经销商'   then '7' 
-  when fax='否' and col20='经销商'   then '8'  
-  when fax='否' and col1>=0 and col1<30 then '4' 
-  when fax='否' and col1>=30 and col1<100  then '5' 
-  when fax='否' and col1>=100 then '6' 
-  when fax='是' and col1>=0 and col1<30 then '1' 
-  when fax='是'and col1>=30 and col1<100 then '2' 
-  when fax='是' and col1>=100   then '3' 
+,case    when fax=''是'' and col20=''经销商''   then ''7'' 
+  when fax=''否'' and col20=''经销商''   then ''8''  
+  when fax=''否'' and col1>=0 and col1<30 then ''4'' 
+  when fax=''否'' and col1>=30 and col1<100  then ''5'' 
+  when fax=''否'' and col1>=100 then ''6'' 
+  when fax=''是'' and col1>=0 and col1<30 then ''1'' 
+  when fax=''是''and col1>=30 and col1<100 then ''2'' 
+  when fax=''是'' and col1>=100   then ''3'' 
 
  end as xwstoretype 
 from VMonStoreLoad

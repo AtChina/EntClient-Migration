@@ -29,7 +29,7 @@ module.exports = function() {
     template += "           ,'{{title}}'\r\n";
     template += "           ,'{{ordernum}}'\r\n";
     template += "           ,'{{xwenterprisenumber}}'\r\n";
-    template += "           ,'{{xwsystemcode}}'');\r\n";
+    template += "           ,'{{xwsystemcode}}');\r\n";
     template += "   END\r\n";
     return template;
 };

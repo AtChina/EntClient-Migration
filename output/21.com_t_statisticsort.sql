@@ -25,7 +25,7 @@ ELSE
            ,'数据监控'
            ,'1'
            ,'1008413'
-           ,'SYS10001'');
+           ,'SYS10001');
    END
   COMMIT TRANSACTION com_t_statisticsort_transaction;
 END TRY

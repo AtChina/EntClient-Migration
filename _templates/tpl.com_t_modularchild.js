@@ -49,7 +49,7 @@ module.exports = function() {
     template += "           ,'{{xwfunctioncode}}'\r\n";
     template += "           ,'{{xwextproperty}}'\r\n";
     template += "           ,'{{xwmodchildkey}}'\r\n";
-    template += "           ,'{{xwenterprisenumber}}'');\r\n";
+    template += "           ,'{{xwenterprisenumber}}');\r\n";
     template += "   END\r\n";
     return template;
 };

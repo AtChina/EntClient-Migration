@@ -45,7 +45,7 @@ ELSE
            ,''
            ,''
            ,''
-           ,'1008413'');
+           ,'1008413');
    END
   COMMIT TRANSACTION com_t__transaction;
 END TRY

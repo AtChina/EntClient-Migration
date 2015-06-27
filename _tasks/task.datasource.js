@@ -13,6 +13,9 @@ module.exports = function() {
         sqlContent = conf.readSqlContent('sql.com_t_datasource.txt');
 
     postgres.query(sqlContent, function(err, result) {
+        result.forEach(function(content, index) {
+            content.xwdescription = content.xwdescription.replace(/\'/g, "''");
+        });
         conf.writeFile(template, result);
     });
     // sqlserver.query('select top 1 * from dbo.com_t_datasource;', function(err, result) {

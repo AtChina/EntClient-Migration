@@ -37,7 +37,7 @@ ELSE
            ,'Sat Mar 03 2012 21:40:45 GMT+0800 (CST)'
            ,'1                   '
            ,'1                                                 '
-           ,'SYS10001'');
+           ,'SYS10001');
    END
   COMMIT TRANSACTION com_t_modular_transaction;
 END TRY

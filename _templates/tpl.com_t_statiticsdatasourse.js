@@ -23,7 +23,7 @@ module.exports = function() {
     template += "           ('{{sourseid}}'\r\n";
     template += "           ,'{{itemid}}'\r\n";
     template += "           ,'{{usetype}}'\r\n";
-    template += "           ,'{{xwenterprisenumber}}'');\r\n";
+    template += "           ,'{{xwenterprisenumber}}');\r\n";
     template += "   END\r\n";
     return template;
 };

@@ -79,7 +79,7 @@ ELSE
            ,'000'
            ,'213b05ff-1b5a-4f4f-af3c-da718ef61425'
            ,'汇报历史old'
-           ,'bd081b4c-221a-47a4-be82-5fefa58598a2'');
+           ,'bd081b4c-221a-47a4-be82-5fefa58598a2');
    END
   COMMIT TRANSACTION com_t_workflow_transaction;
 END TRY

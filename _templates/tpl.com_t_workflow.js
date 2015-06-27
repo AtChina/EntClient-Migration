@@ -83,7 +83,7 @@ module.exports = function() {
     template += "           ,'{{xwversionno}}'\r\n";
     template += "           ,'{{xwworkflowid}}'\r\n";
     template += "           ,'{{xwworkflowname}}'\r\n";
-    template += "           ,'{{xwuserole}}'');\r\n";
+    template += "           ,'{{xwuserole}}');\r\n";
     template += "   END\r\n";
     return template;
 };

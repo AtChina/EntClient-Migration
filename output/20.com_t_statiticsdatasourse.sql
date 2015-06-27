@@ -19,7 +19,7 @@ ELSE
            ('da9b09d5-1a55-4784-b1c5-932b000f779d'
            ,'b481acd4-47c6-46b7-9491-946118f946ec'
            ,'0'
-           ,'1008413'');
+           ,'1008413');
    END
   COMMIT TRANSACTION com_t_statiticsdatasourse_transaction;
 END TRY
