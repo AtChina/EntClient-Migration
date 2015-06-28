@@ -5,7 +5,8 @@
 ### 使用说明
 安装`nodejs`后，进入**EntClient-Migration**目录，目录工程结构如下:
 #### _conf：配置文件目录
-`conf.database.yml`,用于配置数据库链接,例如：
+* `conf.database.yml`
+用于配置数据库链接,例如：
 
 ```
 - dbname: 'xw_dc_enterprise'               #不能修改，这个名称对应目标数据库，也就是最新企业端数据库（MSSQL）
@@ -34,9 +35,10 @@
   description: '需要迁移的网关企业数据库'
 ```
 
-`conf.enterprise.yml`,用于配置企业一些默认配置，例如：
+* `conf.enterprise.yml`
+用于配置企业一些默认配置，例如：
 
-``
+```
 xwsystemcode: 'SYS10001'            #业务系统编码
 xwenterprisenumber: 1008413         #企业E号
 managermanid: 629991                #维护人员E号
@@ -58,7 +60,8 @@ xwfunctioncode: ''
 xwfunctionname: ''
 ```
 
-`conf.tasksort.yml`,用于配置每个任务对应的导出路径、导出文件名称、导出批次大小、事务名次等等
+* `conf.tasksort.yml`
+用于配置每个任务对应的导出路径、导出文件名称、导出批次大小、事务名次等等,例如：
 
 ```
 - taskname: 'department'                                  #任务名称，要跟_tasks/index.js里的任务名称一致
