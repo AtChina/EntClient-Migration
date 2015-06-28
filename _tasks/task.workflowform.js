@@ -83,7 +83,10 @@ module.exports = function() {
     }).then(function(contents) { //第四步:根据协议内容生成Update或者Insert脚本
         conf.writeFile(template, contents);
     }).catch(function(error) {
-        process.stdout.write(util.format('\x1b[31m%s\x1b[0m', 'Fail: ' + error + '\n\n')); //处理错误
+        if (process.send && error)
+            process.send(conf.taskname);
+        else
+            process.stdout.write(util.format('\x1b[31m%s\x1b[0m', error + '\n\n')); //处理错误
     }).finally(function(success) {
         del(['./.tmp']); //最后清除临时文件
     }).done();

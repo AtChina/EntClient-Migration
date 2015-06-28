@@ -38,7 +38,6 @@ module.exports = function(template, contents, conf) {
                 }
                 deferred.resolve(sqlContent);
             } catch (err) {
-                console.error(err);
                 deferred.reject(new Error(err));
             }
             return deferred.promise;
@@ -78,10 +77,10 @@ module.exports = function(template, contents, conf) {
             }
         }
     }).catch(function(error) {
-        if (process.send && error) {
-            process.send('Fail');
-        }
-        process.stdout.write(util.format('\x1b[31m%s\x1b[0m', '\nFail: ' + error + '\n')); //处理错误
+        if (process.send && error)
+            process.send(conf.taskname);
+        else if (error)
+            process.stdout.write(util.format('\x1b[31m%s\x1b[0m', error + '\n')); //处理错误
     }).finally(function(error) {
         if (!!!process.send)
             console.timeEnd(conf.writeTaskTimer);
