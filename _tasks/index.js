@@ -38,6 +38,7 @@ module.exports = function() {
         roledept: require('./task.roledept'),
         rolefunction: require('./task.rolefunction'),
         datafile: require('./task.datafile'),
-        default: require('./task.all')
+        default: require('./task.all'),
+        help: require('../_utility/tool.helper')
     };
 };

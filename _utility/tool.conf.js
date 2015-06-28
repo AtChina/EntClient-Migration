@@ -13,13 +13,15 @@ module.exports = function() {
         path = require('path'),
         _ = require('underscore'),
         yamljs = require('yamljs'),
+        initTaskTimer = '任务初始化耗时',
+        writeTaskTimer = '将查询结果写入文件耗时',
         writer = require(__dirname + '/tool.writer'),
         database = yamljs.load(process.cwd() + '/_conf/conf.database.yml'),
         enterprise = yamljs.load(process.cwd() + '/_conf/conf.enterprise.yml'),
         tasklist = yamljs.load(process.cwd() + '/_conf/conf.tasksort.yml'),
         taskname = path.basename(module.parent.filename, path.extname(module.parent.filename)).replace(/task./g, "");
 
-    console.time('Init ' + taskname + ' Task Spend');
+    console.time(initTaskTimer);
     conf = _.findWhere(tasklist, {
         taskname: taskname
     }) || {};
@@ -29,6 +31,8 @@ module.exports = function() {
         taskConf.transaction = require(__dirname + '/tool.transaction')(conf.transaction, conf.description);
         taskConf = _.extend(conf, taskConf);
     }
+    taskConf.initTaskTimer = initTaskTimer;
+    taskConf.writeTaskTimer = writeTaskTimer;
     taskConf.taskname = taskname;
     taskConf.enterprise = enterprise || {};
     taskConf.database = require(__dirname + '/tool.driver')(database);
@@ -41,7 +45,7 @@ module.exports = function() {
         return require(process.cwd() + '/_templates/' + filePath)();
     }
     taskConf.writeFile = function(template, contents) {
-        console.time('WriteFile Spend');
+        console.time(writeTaskTimer);
         if (this.batch_size) {
             var batchs = Math.floor(contents.length / this.batch_size);
             if (contents % this.batch_size)
@@ -63,6 +67,6 @@ module.exports = function() {
         }
     }
     if (!!!process.send)
-        console.timeEnd('Init ' + taskname + ' Task Spend');
+        console.timeEnd(initTaskTimer);
     return taskConf;
 };

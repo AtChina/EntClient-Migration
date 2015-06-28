@@ -1,7 +1,7 @@
 /**
  * Author:      changyingwei
  * Create Date: 2015-06-25
- * Description: 数据库访问驱动器
+ * Description: 数据库访问驱动器,更多其他Nodejs数据库访问驱动参考：https://github.com/joyent/node/wiki/modules#database
  */
 module.exports = function(dbConf) {
     'use strict';
@@ -9,7 +9,8 @@ module.exports = function(dbConf) {
         pg = require('pg'),
         mysql = require('mysql'),
         mssql = require('mssql'),
-        _ = require('underscore');
+        _ = require('underscore'),
+        timer = '从数据库读取数据耗时';
 
     _.each(dbConf, function(conf, index) {
         driver[conf.dbname] = {};
@@ -17,12 +18,12 @@ module.exports = function(dbConf) {
             case 'sqlserver':
                 driver[conf.dbname].query = function(sqlContent, callback) {
                     var connection = new mssql.Connection(conf);
-                    console.time('Query Data Spend');
+                    console.time(timer);
                     connection.connect(function(err) {
                         var req = new mssql.Request(connection);
                         req.query(sqlContent, function(err, recordset) {
                             if (!!!process.send)
-                                console.timeEnd('Query Data Spend');
+                                console.timeEnd(timer);
                             callback(err, recordset);
                             if (err)
                                 console.error(err);
@@ -38,11 +39,11 @@ module.exports = function(dbConf) {
             case 'postgres':
                 driver[conf.dbname].query = function(sqlContent, callback) {
                     var client = new pg.Client(conf);
-                    console.time('Query Data Spend');
+                    console.time(timer);
                     client.connect();
                     client.query(sqlContent, function(err, recordset) {
                             if (!!!process.send)
-                                console.timeEnd('Query Data Spend');
+                                console.timeEnd(timer);
                             callback(err, recordset.rows);
                             if (err)
                                 console.error(err);
@@ -50,6 +51,16 @@ module.exports = function(dbConf) {
                         .on('end', function() {
                             client.end();
                         });
+                };
+                break;
+            case 'oracle':
+                driver[conf.dbname].query = function(sqlContent, callback) {
+                    //TODO:
+                };
+                break;
+            case 'mysql':
+                driver[conf.dbname].query = function(sqlContent, callback) {
+                    //TODO:
                 };
                 break;
         }

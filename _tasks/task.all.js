@@ -14,13 +14,14 @@ module.exports = function() {
         _ = require('underscore'),
         child = require('child_process'),
         ProgressBar = require('progress'),
-        taskNames = _.without(_.keys(taskList), 'default');
+        taskNames = _.without(_.keys(taskList), 'default', 'help');
 
     del(['./output/*'], function(err, paths) {
-        var bar = new ProgressBar('  tasks progressing [:bar] :percent :elapseds', {
+        console.log('  多线程执行所有任务:');
+        var bar = new ProgressBar('                     [:bar] :percent :elapseds', {
             complete: '=',
             incomplete: '-',
-            width: 35,
+            width: 40,
             total: taskNames.length + 1
         });
         bar.tick();
@@ -36,9 +37,9 @@ module.exports = function() {
                 bar.tick();
                 if (bar.complete) {
                     process.stdout.write('\n');
-                    process.stdout.write(util.format('\x1b[36m%s', '  SUMMARY:\n         '));
-                    process.stdout.write(util.format('\x1b[32m%s\x1b[0m', 'Finish：' + messages.successed + '  '));
-                    process.stdout.write(util.format('\x1b[31m%s\x1b[0m', 'Fail: ' + messages.failed + '\n\n'));
+                    process.stdout.write(util.format('\x1b[36m%s', '  任务汇总:\n         '));
+                    process.stdout.write(util.format('\x1b[32m%s\x1b[0m', '  完成：' + messages.successed + '  '));
+                    process.stdout.write(util.format('\x1b[31m%s\x1b[0m', '  失败: ' + messages.failed + '\n\n'));
                 }
             });
         });
