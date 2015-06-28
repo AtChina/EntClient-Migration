@@ -19,6 +19,7 @@ module.exports = function() {
         tasklist = yamljs.load(process.cwd() + '/_conf/conf.tasksort.yml'),
         taskname = path.basename(module.parent.filename, path.extname(module.parent.filename)).replace(/task./g, "");
 
+    console.time('Init ' + taskname + ' Task Spend');
     conf = _.findWhere(tasklist, {
         taskname: taskname
     }) || {};
@@ -40,6 +41,7 @@ module.exports = function() {
         return require(process.cwd() + '/_templates/' + filePath)();
     }
     taskConf.writeFile = function(template, contents) {
+        console.time('WriteFile Spend');
         if (this.batch_size) {
             var batchs = Math.floor(contents.length / this.batch_size);
             if (contents % this.batch_size)
@@ -60,5 +62,7 @@ module.exports = function() {
             writer(template, contents, this); //全部导出处理逻辑
         }
     }
+    if (!!!process.send)
+        console.timeEnd('Init ' + taskname + ' Task Spend');
     return taskConf;
 };

@@ -17,9 +17,12 @@ module.exports = function(dbConf) {
             case 'sqlserver':
                 driver[conf.dbname].query = function(sqlContent, callback) {
                     var connection = new mssql.Connection(conf);
+                    console.time('Query Data Spend');
                     connection.connect(function(err) {
                         var req = new mssql.Request(connection);
                         req.query(sqlContent, function(err, recordset) {
+                            if (!!!process.send)
+                                console.timeEnd('Query Data Spend');
                             callback(err, recordset);
                             if (err)
                                 console.error(err);
@@ -35,8 +38,11 @@ module.exports = function(dbConf) {
             case 'postgres':
                 driver[conf.dbname].query = function(sqlContent, callback) {
                     var client = new pg.Client(conf);
+                    console.time('Query Data Spend');
                     client.connect();
                     client.query(sqlContent, function(err, recordset) {
+                            if (!!!process.send)
+                                console.timeEnd('Query Data Spend');
                             callback(err, recordset.rows);
                             if (err)
                                 console.error(err);

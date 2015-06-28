@@ -83,6 +83,7 @@ module.exports = function(template, contents, conf) {
         }
         process.stdout.write(util.format('\x1b[31m%s\x1b[0m', '\nFail: ' + error + '\n')); //处理错误
     }).finally(function(error) {
-        // TODO:
+        if (!!!process.send)
+            console.timeEnd('WriteFile Spend');
     }).done();
 };
