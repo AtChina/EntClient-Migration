@@ -77,10 +77,11 @@ module.exports = function(template, contents, conf) {
             }
         }
     }).catch(function(error) {
-        if (process.send && error)
+        if (process.send && error) {
             process.send(conf.taskname);
-        else if (error)
-            process.stdout.write(util.format('\x1b[31m%s\x1b[0m', error + '\n')); //处理错误
+        } else if (error) {
+            process.stdout.write(util.format('\x1b[31m%s\x1b[0m', error.stack + '\n')); //错误堆栈
+        }
     }).finally(function(error) {
         if (!!!process.send)
             console.timeEnd(conf.writeTaskTimer);

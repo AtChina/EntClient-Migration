@@ -18,8 +18,8 @@ module.exports = function() {
         taskNames = _.without(_.keys(taskList), 'default', 'help');
 
     del(['./output/*'], function(err, paths) {
-        console.log('  多线程执行所有任务:');
-        var bar = new ProgressBar('                     [:bar] :percent :elapseds', {
+        process.stdout.write('\n');
+        var bar = new ProgressBar('  完成进度: [:bar] :percent :elapseds', {
             complete: '=',
             incomplete: '-',
             width: 40,
@@ -40,15 +40,16 @@ module.exports = function() {
                 if (bar.complete) {
                     process.stdout.write('\n');
                     process.stdout.write(util.format('\x1b[36m%s', '  任务汇总:\n         '));
-                    process.stdout.write(util.format('\x1b[32m%s\x1b[0m', '  完成：' + messages.successed + '  '));
-                    process.stdout.write(util.format('\x1b[31m%s\x1b[0m', '  失败: ' + messages.failed + '\n\n'));
+                    process.stdout.write(util.format('\x1b[32m%s\x1b[0m', '   完成：' + messages.successed + '  '));
+                    process.stdout.write(util.format('\x1b[31m%s\x1b[0m', '   失败: ' + messages.failed + '\n'));
                     //给出失败任务反馈
                     if (failMessages.length) {
-                        process.stdout.write(util.format('\x1b[31m%s', '  失败任务:\n         '));
+                        process.stdout.write(util.format('\x1b[31m%s', '  失败任务:\n'));
                         _.each(failMessages, function(msg) {
-                            process.stdout.write(util.format('\x1b[33m%s\x1b[0m', '  node index.js ' + msg + '\n\n'));
+                            process.stdout.write(util.format('\x1b[33m%s\x1b[0m', '            node index.js ' + msg + '\n'));
                         });
                     }
+                    process.stdout.write('\n');
                 }
             });
         });
