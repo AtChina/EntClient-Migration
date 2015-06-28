@@ -1,6 +1,6 @@
 ##说明文件
 ###环境依赖
-企业配置化数据库自动迁移脚本需要依赖[nodejs](http://nodejs.org/dist/v0.10.33/node-v0.10.33-x86.msi)，使用前请先自行下载安装。修改模板推荐使用[Sublime Text](https://www.sublimetext.com/)编辑器。
+迁移工具依赖[nodejs](http://nodejs.org/dist/v0.10.33/node-v0.10.33-x86.msi)，使用前请先自行下载安装。修改模板推荐使用[Sublime Text](https://www.sublimetext.com/)编辑器。
 
 ###使用说明
 安装`nodejs`后，进入**EntClient-Migration**目录，目录工程结构如下：提示框
