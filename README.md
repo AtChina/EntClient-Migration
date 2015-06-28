@@ -1,11 +1,12 @@
-##说明文件
-###环境依赖
+## 说明文件
+### 环境依赖
 迁移工具依赖[nodejs](http://nodejs.org/dist/v0.10.33/node-v0.10.33-x86.msi)，使用前请先自行下载安装。修改模板推荐使用[Sublime Text](https://www.sublimetext.com/)编辑器。
 
-###使用说明
+### 使用说明
 安装`nodejs`后，进入**EntClient-Migration**目录，目录工程结构如下:
-####_conf：配置文件目录
-* conf.database.yml:数据库链接配置,例如：
+#### _conf：配置文件目录
+`conf.database.yml`,用于配置数据库链接,例如：
+
 ```
 - dbname: 'xw_dc_enterprise'               #不能修改，这个名称对应目标数据库，也就是最新企业端数据库（MSSQL）
   dbtype: 'sqlserver'                      #数据库类型，目前仅支持sqlserver和postgres两个钟
@@ -32,7 +33,9 @@
   database: 'db_xuanwuenterprise_20150623'
   description: '需要迁移的网关企业数据库'
 ```
-	* conf.enterprise.yml:企业项目的一些默认配置，例如：
+
+`conf.enterprise.yml`,用于配置企业一些默认配置，例如：
+
 ``
 xwsystemcode: 'SYS10001'            #业务系统编码
 xwenterprisenumber: 1008413         #企业E号
@@ -54,7 +57,9 @@ usernumber: 0
 xwfunctioncode: ''
 xwfunctionname: ''
 ```
-	* conf.tasksort.yml:这里配置每个任务对应的导出路径、导出文件名称、导出批次大小、事务名次等等
+
+`conf.tasksort.yml`,用于配置每个任务对应的导出路径、导出文件名称、导出批次大小、事务名次等等
+
 ```
 - taskname: 'department'                                  #任务名称，要跟_tasks/index.js里的任务名称一致
   batch_size: 100                                         #导出批次大小设置，可以有可无，没有都不做分批处理
@@ -68,15 +73,24 @@ xwfunctionname: ''
   transaction: 'com_t_userinfo_transaction'
   description: 'import data to com_t_userinfo table'
 ```
-* _sqls：数据导出查询语句文件目录
-* _tasks:任务文件目录
-* _utility:数据导出引擎逻辑和公用服务文件目录
-* _templates：目标表Insert和Update插入语句模板文件目录
-* _workflowfile:事务表单文件目录
-* node_modules：任务依赖的第三方模块
-* output：任务执行结果
-* README.md:工程使用说明文件
-* index.js：运行任务的入口文件，在**EntClient-Migration**目录下，按住shift+鼠标右键，然后选择“在此处打开命令行窗口”，输入`node index.js`即可运行工作流了。
+
+#### _sqls
+数据导出查询语句文件目录
+#### _tasks
+任务文件目录
+#### _utility
+数据导出引擎逻辑和公用服务文件目录
+#### _templates
+目标表Insert和Update插入语句模板文件目录
+#### _workflowfile
+事务表单文件目录
+#### node_modules
+任务依赖的第三方模块
+#### output：任务执行结果
+#### README.md
+工程使用说明文件
+#### index.js
+运行任务的入口文件，在**EntClient-Migration**目录下，按住shift+鼠标右键，然后选择“在此处打开命令行窗口”，输入`node index.js`即可运行工作流了。
 
 ##应用场景
 企业端迁移需要从PG数据库导出数据，再在多租户平台导入到MSSQL，这个过程人工手动操作，迁移过程实施效率低、成本高，并且容易出错、工时不能量化，因为迁移过程企业端版本差异大，遇到问题多，难度大，后期规划有二十来个企业进行同样的升级，预计会占用大量产品开发和实施资源，为了能够使得这部分重复而繁琐的工作得以量产，玄迅快消团队开发了的这个自动化迁移工具，目的是使得从PG数据库到MSSQL数据库的迁移能够自动化，规范化，从而提高实施效率（预计70%以上）。
