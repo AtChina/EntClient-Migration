@@ -3,8 +3,71 @@
 迁移工具依赖[nodejs](http://nodejs.org/dist/v0.10.33/node-v0.10.33-x86.msi)，使用前请先自行下载安装。修改模板推荐使用[Sublime Text](https://www.sublimetext.com/)编辑器。
 
 ###使用说明
-安装`nodejs`后，进入**EntClient-Migration**目录，目录工程结构如下：提示框
+安装`nodejs`后，进入**EntClient-Migration**目录，目录工程结构如下:
 * _conf：配置文件目录
+	* conf.database.yml:数据库链接配置,例如：
+```
+- dbname: 'xw_dc_enterprise'               #不能修改，这个名称对应目标数据库，也就是最新企业端数据库（MSSQL）
+  dbtype: 'sqlserver'                      #数据库类型，目前仅支持sqlserver和postgres两个钟
+  server: 'localhost'                      #数据库IP，注意：MSSQL数据库对应server，PG数据库对应host
+  port: 1433                               #数据库端口
+  user: 'test'                             #数据库帐号
+  password: 'test'                         #数据库密码
+  database: 'xw_dl_test'                   #数据名次，你实际需要迁移到的MSSQL数据库名称
+  description: '最新企业端业务数据库'    	   #描述说明
+- dbname: 'xuanwuservice'
+  dbtype: 'postgres'
+  host: 'localhost'
+  port: 5432
+  user: 'test'
+  password: '123456'
+  database: 'db_xuanwuservice_20150623'
+  description: '需要迁移的网关数据库'
+- dbname: 'xuanwuenterprise'
+  dbtype: 'postgres'
+  host: 'localhost'
+  port: '5432'
+  user: 'test'
+  password: 'test'
+  database: 'db_xuanwuenterprise_20150623'
+  description: '需要迁移的网关企业数据库'
+```
+	* conf.enterprise.yml:企业项目的一些默认配置，例如：
+``
+xwsystemcode: 'SYS10001'            #业务系统编码
+xwenterprisenumber: 1008413         #企业E号
+managermanid: 629991                #维护人员E号
+xwviagrateway: 0
+xwpriority: 0
+xwcachetime: 0
+xwtype: 0
+functionid: 0
+systemcode: ''
+xwallowdarwing: 0
+parentcode: 0
+roledeptid: 0
+departmentid: ''
+rolefunctionid: ''
+userroleid: ''
+enterpriseid: 0
+usernumber: 0
+xwfunctioncode: ''
+xwfunctionname: ''
+```
+	* conf.tasksort.yml:这里配置每个任务对应的导出路径、导出文件名称、导出批次大小、事务名次等等
+```
+- taskname: 'department'                                  #任务名称，要跟_tasks/index.js里的任务名称一致
+  batch_size: 100                                         #导出批次大小设置，可以有可无，没有都不做分批处理
+  output_name: 'com_t_department.sql'                     #导出文件名
+  output_path: './output/'                                #导出目录
+  transaction: 'com_t_department_transaction'             #事务名称
+  description: 'import data to com_t_department table'    #任务描述
+- taskname: 'userinfo'
+  output_name: 'com_t_userinfo.sql'
+  output_path: './output/'
+  transaction: 'com_t_userinfo_transaction'
+  description: 'import data to com_t_userinfo table'
+```
 * _sqls：数据导出查询语句文件目录
 * _tasks:任务文件目录
 * _utility:数据导出引擎逻辑和公用服务文件目录
