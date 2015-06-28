@@ -4,8 +4,8 @@
 
 ###使用说明
 安装`nodejs`后，进入**EntClient-Migration**目录，目录工程结构如下:
-* _conf：配置文件目录
-	* conf.database.yml:数据库链接配置,例如：
+####_conf：配置文件目录
+* conf.database.yml:数据库链接配置,例如：
 ```
 - dbname: 'xw_dc_enterprise'               #不能修改，这个名称对应目标数据库，也就是最新企业端数据库（MSSQL）
   dbtype: 'sqlserver'                      #数据库类型，目前仅支持sqlserver和postgres两个钟
