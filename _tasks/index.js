@@ -19,6 +19,7 @@ module.exports = function() {
         localfield: require('./task.localfield'),
         directory: require('./task.directory'),
         workflow: require('./task.workflow'),
+        workflowrole: require('./task.workflowrole'),
         workflowform: require('./task.workflowform'),
         workflowlink: require('./task.workflowlink'),
         modular: require('./task.modular'),

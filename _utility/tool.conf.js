@@ -51,7 +51,7 @@ module.exports = function() {
             if (contents % this.batch_size)
                 batchs += 1;
             if (process.send)
-                process.send(batchs); //通知主线程更新进度
+                process.send(batchs + 1); //通知主线程更新进度
             for (var i = batchs; i >= 0; i--) {
                 var content = [],
                     suffix = path.extname(conf.output_name),
