@@ -24,9 +24,10 @@ module.exports = function(dbConf) {
                         req.query(sqlContent, function(err, recordset) {
                             if (!!!process.send)
                                 console.timeEnd(timer);
-                            callback(err, recordset);
                             if (err)
                                 console.error(err);
+                            else
+                                callback(err, recordset);
                             connection.close();
                         });
                         if (err) {
@@ -44,9 +45,10 @@ module.exports = function(dbConf) {
                     client.query(sqlContent, function(err, recordset) {
                             if (!!!process.send)
                                 console.timeEnd(timer);
-                            callback(err, recordset.rows);
                             if (err)
                                 console.error(err);
+                            else
+                                callback(err, recordset.rows);
                         })
                         .on('end', function() {
                             client.end();
