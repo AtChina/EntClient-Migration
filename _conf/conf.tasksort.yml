@@ -1,5 +1,6 @@
 #自动化任务执行顺序配置
 - taskname: 'department'
+  batch_size: 1000
   output_name: 'com_t_department.sql'
   output_path: './output/'
   transaction: 'com_t_department_transaction'
@@ -65,7 +66,6 @@
   transaction: 'com_t_workflow_transaction'
   description: 'import data to com_t_workflow table'
 - taskname: 'workflowform'
-  batch_size: 100
   output_name: 'com_t_workflowform.sql'
   output_path: './output/'
   transaction: 'com_t_workflowform_transaction'

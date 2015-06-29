@@ -52,7 +52,7 @@ module.exports = function() {
                 batchs += 1;
             if (process.send)
                 process.send(batchs); //通知主线程更新进度
-            for (var i = batchs; i >= 1; i--) {
+            for (var i = batchs; i >= 0; i--) {
                 var content = [],
                     suffix = path.extname(conf.output_name),
                     basename = path.basename(conf.output_name, suffix);

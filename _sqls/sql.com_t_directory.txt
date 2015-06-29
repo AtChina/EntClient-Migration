@@ -1,1 +1,1 @@
-SELECT * FROM xwdirectory limit 1;
+SELECT * FROM xwdirectory where xwnodecode like '3.1%'; --查询表单目录
