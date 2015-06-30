@@ -1,1 +1,1 @@
-SELECT * FROM xwcondition limit 1;
+SELECT * FROM xwcondition;
