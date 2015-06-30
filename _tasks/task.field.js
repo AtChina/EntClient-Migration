@@ -9,8 +9,8 @@ module.exports = function() {
     var conf = require('../_utility/tool.conf')(),
         postgres = conf.database.xuanwuenterprise,
         sqlserver = conf.database.xw_dc_enterprise,
-        template = conf.readTemplate('tpl.com_t_field.js'),
-        sqlContent = conf.readSqlContent('sql.com_t_field.txt');
+        template = conf.readTemplate('tpl.com_t_field.sql'),
+        sqlContent = conf.readSqlContent('sql.com_t_field.sql');
 
     postgres.query(sqlContent, function(err, result) {
         conf.writeFile(template, result);

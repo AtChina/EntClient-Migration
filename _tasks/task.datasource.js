@@ -9,8 +9,8 @@ module.exports = function() {
     var conf = require('../_utility/tool.conf')(),
         postgres = conf.database.xuanwuenterprise,
         sqlserver = conf.database.xw_dc_enterprise,
-        template = conf.readTemplate('tpl.com_t_datasource.js'),
-        sqlContent = conf.readSqlContent('sql.com_t_datasource.txt');
+        template = conf.readTemplate('tpl.com_t_datasource.sql'),
+        sqlContent = conf.readSqlContent('sql.com_t_datasource.sql');
 
     postgres.query(sqlContent, function(err, result) {
         result.forEach(function(content, index) {

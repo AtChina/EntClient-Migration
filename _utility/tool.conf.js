@@ -42,7 +42,9 @@ module.exports = function() {
         }).toString();
     }
     taskConf.readTemplate = function(filePath) {
-        return require(process.cwd() + '/_templates/' + filePath)();
+        return fs.readFileSync(process.cwd() + '/_templates/' + filePath, {
+            encoding: 'utf8'
+        }).toString();
     }
     taskConf.writeFile = function(template, contents) {
         console.time(writeTaskTimer);

@@ -15,7 +15,7 @@ module.exports = function() {
         uuid = require('node-uuid'),
         decompress = require('gulp-decompress'),
         conf = require('../_utility/tool.conf')(),
-        template = conf.readTemplate('tpl.com_t_workflowform.js');
+        template = conf.readTemplate('tpl.com_t_workflowform.sql');
 
     Q.fcall(function() { //第一步:清理.tmp目录
         var deferred = Q.defer();
