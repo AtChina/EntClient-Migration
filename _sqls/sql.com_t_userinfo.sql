@@ -1,1 +1,1 @@
-SELECT * FROM xwuserinfo limit 1;
+SELECT * FROM xwuserinfo;

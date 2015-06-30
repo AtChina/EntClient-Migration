@@ -1,1 +1,1 @@
-SELECT * FROM xwimpexpconfig limit 1;
+SELECT * FROM xwimpexpconfig;

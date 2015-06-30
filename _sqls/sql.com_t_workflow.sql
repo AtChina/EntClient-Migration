@@ -1,1 +1,1 @@
-SELECT * FROM xwworkflow limit 1;
+SELECT * FROM xwworkflow;

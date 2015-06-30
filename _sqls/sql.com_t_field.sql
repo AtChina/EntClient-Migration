@@ -1,1 +1,1 @@
-SELECT * FROM xwfield limit 1;
+SELECT * FROM xwfield;

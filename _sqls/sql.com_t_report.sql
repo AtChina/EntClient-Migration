@@ -1,1 +1,1 @@
-SELECT * FROM xwreport limit 1;
+SELECT * FROM xwreport;

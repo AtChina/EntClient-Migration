@@ -1,1 +1,1 @@
-SELECT * FROM xwsrcdatacollect limit 1;
+SELECT * FROM xwsrcdatacollect;

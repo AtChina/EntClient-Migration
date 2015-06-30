@@ -1,1 +1,1 @@
-SELECT * FROM xwlocalfield limit 1;
+SELECT * FROM xwlocalfield;

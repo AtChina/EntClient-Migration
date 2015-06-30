@@ -1,1 +1,1 @@
-SELECT * FROM xwfunction limit 1;
+SELECT * FROM xwfunction;

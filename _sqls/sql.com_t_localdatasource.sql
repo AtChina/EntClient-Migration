@@ -1,1 +1,1 @@
-SELECT * FROM xwlocaldatasource limit 1;
+SELECT * FROM xwlocaldatasource;

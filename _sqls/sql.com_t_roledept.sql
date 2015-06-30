@@ -1,1 +1,1 @@
-SELECT * FROM xwroledepts limit 1;
+SELECT * FROM xwroledepts;

@@ -1,1 +1,1 @@
-SELECT * FROM xwrole limit 1;
+SELECT * FROM xwrole;

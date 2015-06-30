@@ -1,1 +1,1 @@
-SELECT * FROM xwmodular limit 1;
+SELECT * FROM xwmodular;

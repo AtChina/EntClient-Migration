@@ -1,1 +1,1 @@
-SELECT * FROM xwmapappsetting limit 1;
+SELECT * FROM xwmapappsetting;

@@ -1,1 +1,1 @@
-SELECT * FROM xwmodularchild limit 1;
+SELECT * FROM xwmodularchild;

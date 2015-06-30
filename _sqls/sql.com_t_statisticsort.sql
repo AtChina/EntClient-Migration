@@ -1,1 +1,1 @@
-SELECT * FROM xwstatisticsort limit 1;
+SELECT * FROM xwstatisticsort;

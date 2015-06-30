@@ -1,1 +1,1 @@
-SELECT * FROM xwmenulist limit 1;
+SELECT * FROM xwmenulist;
