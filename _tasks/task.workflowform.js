@@ -57,6 +57,7 @@ module.exports = function() {
                         workflowid = path.basename(file.path, protocol),
                         content = file.contents.toString('utf8', 0, file.contents.length);
 
+                    workflowid = file.path.replace(file.base, "").replace(('\\' + workflowid + protocol), "");
                     callback(null, {
                         xwworkflowformid: uuid.v4(),
                         xwworkflowid: workflowid,
